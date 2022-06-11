@@ -1,0 +1,113 @@
+{
+  "role": "data store",
+  "users": [
+    {
+      "id": 0,
+      "firstname": "firstname",
+      "lastname": "lastname",
+      "email": "user@email.com",
+      "phonenumber": "phonenumber",
+      "password": "password",
+      "money_balance": "1000",
+      "emailverified": false,
+      "withdrawal_requirement": "Regulation code"
+    },
+    {
+      "id": 1,
+      "firstname": "jerry2",
+      "lastname": "santos",
+      "email": "jerrysantos2030@gmail.com",
+      "phonenumber": "12345678",
+      "password": "password",
+      "current_balance": 0,
+      "emailverified": false,
+      "withdrawal_requirement": "Regulation code"
+    },
+    {
+      "id": 3,
+      "firstname": "daimon",
+      "lastname": "hills",
+      "email": "daimonhills@protonmail.com",
+      "phonenumber": "+19159950188",
+      "password": "123456",
+      "current_balance": 0,
+      "emailverified": false,
+      "withdrawal_requirement": "Regulation code"
+    },
+    {
+      "id": 2,
+      "firstname": "Mandy",
+      "lastname": "Gretel",
+      "email": "mandygretel@gmail.com",
+      "phonenumber": "12345678910",
+      "password": "password",
+      "withdrawal_requirement": "Regulation code",
+      "balance": {
+        "crypto": {
+          "account_balance": "3000",
+          "sell_this_month": "0",
+          "buy_this_month": "0",
+          "estimated_value": "0",
+          "portfolio": [
+            "\"ada:30%\"",
+            " \"btc:20%\"",
+            "\"sol:10%\"",
+            "\"dot:10%\"",
+            "\"cro:20%\"",
+            "\"zcash:10%\""
+          ]
+        },
+        "forex": {
+          "account_balance": "2000",
+          "sell_this_month": "0",
+          "buy_this_month": "0",
+          "estimated_value": "0",
+          "portfolio": [
+            "\"dollar:30%\"",
+            " \"euro:20%\"",
+            "\"pounds:10%\"",
+            "\"cedes:40%\""
+          ]
+        },
+        "indices": {
+          "account_balance": "1000",
+          "sell_this_month": "0",
+          "buy_this_month": "0",
+          "estimated_value": "0",
+          "portfolio": [
+            ""
+          ]
+        },
+        "shares": {
+          "account_balance": "500",
+          "sell_this_month": "0",
+          "buy_this_month": "0",
+          "estimated_value": "0",
+          "portfolio": [
+            "\"tesla:30%\"",
+            " \"twitter:20%\"",
+            "\"meta:10%\"",
+            "\"neuralink:40%\""
+          ]
+        },
+        "commodities": {
+          "account_balance": "250",
+          "sell_this_month": "0",
+          "buy_this_month": "0",
+          "estimated_value": "90",
+          "portfolio": [
+            "\"tesla:10%\"",
+            " \"twitter:10%\"",
+            "\"meta:10%\"",
+            "\"neuralink:10%\"",
+            "\"milo:10%\"",
+            " \"milk:20%\"",
+            " \"land:10%\"",
+            " \"silver:10%\"",
+            " \"housing:10%\""
+          ]
+        }
+      }
+    }
+  ]
+}
