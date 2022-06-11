@@ -16,7 +16,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 require("dotenv").config();
 
-require('../db/mongoose');
+require('./db/mongoose');
 
 var app = (0, _express["default"])();
 app.use(function (req, res, next) {

@@ -3,7 +3,7 @@ import "regenerator-runtime/runtime.js";
 import express from "express";
 import http from "http";
 
-require('../db/mongoose')
+require('./db/mongoose')
 
 import routes from './routes';
 
