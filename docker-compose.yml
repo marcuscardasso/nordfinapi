@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /usr/bin/docker/db/data:/apidb
+      - /data-vol:/data/db
   app:
     container_name: app
     restart: always
