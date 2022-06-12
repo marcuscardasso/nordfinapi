@@ -2,8 +2,7 @@ require("dotenv").config();
 import "regenerator-runtime/runtime.js";
 import express from "express";
 import http from "http";
-
-require('./db/mongoose')
+import mongoose from "mongoose";
 
 import routes from './routes';
 
@@ -34,10 +33,19 @@ app.use(admin);
 app.use(user);
 app.use(contact);
 
-server.listen(PORT, async (error) => {
-  if (error) {
-    return error;
-  }
+mongoose.connect('mongodb://db:27017/apidb', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true 
+}).then(() => {
+    console.log('connected');
 
-  return console.log(`server started on port ${PORT}`);
+    server.listen(PORT, async (error) => {
+      if (error) {
+        return error;
+      }
+    
+      return console.log(`server started on this port here: ${PORT}`);
+    });
 });
