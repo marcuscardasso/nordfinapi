@@ -50,6 +50,8 @@ app.use(user);
 app.use(contact);
 
 _mongoose["default"].connect('mongodb://db:27017/apidb', {
+  //mongodb://db:27017/apidb =====> production
+  //mongodb://127.0.0.1:27017/apidb ===> development
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -70,7 +72,7 @@ _mongoose["default"].connect('mongodb://db:27017/apidb', {
               return _context.abrupt("return", error);
 
             case 2:
-              return _context.abrupt("return", console.log("server started on this port here: ".concat(PORT)));
+              return _context.abrupt("return", console.log("server started on port here ".concat(PORT)));
 
             case 3:
             case "end":
