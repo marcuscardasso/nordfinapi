@@ -2,7 +2,8 @@ require("dotenv").config();
 import "regenerator-runtime/runtime.js";
 import express from "express";
 import http from "http";
-import mongoose from "mongoose";
+
+import mongoose from 'mongoose';
 
 import routes from './routes';
 
@@ -33,7 +34,9 @@ app.use(admin);
 app.use(user);
 app.use(contact);
 
-mongoose.connect('mongodb://db:27017/apidb', {
+mongoose.connect('mongodb://127.0.0.1:27017/apidb', {
+  //mongodb://db:27017/apidb =====> development
+
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -46,6 +49,6 @@ mongoose.connect('mongodb://db:27017/apidb', {
         return error;
       }
     
-      return console.log(`server started on this port here: ${PORT}`);
+      return console.log(`server started on port ${PORT}`);
     });
 });
