@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /usr/bin/docker/swissnordicapi/data:/apidb
+      - /usr/bin/docker/db/data:/apidb
   app:
     container_name: app
     restart: always
