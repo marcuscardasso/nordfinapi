@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+    iban: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     admin: {
         type: Boolean,
         required: true,
