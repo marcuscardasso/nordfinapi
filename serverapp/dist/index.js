@@ -44,7 +44,7 @@ var PORT = process.env.PORT || 8080;
 var server = _http["default"].createServer(app);
 
 app.get('/', function (req, res) {
-  res.send('hello world api');
+  res.send('hello world api from sn');
 });
 app.use(auth);
 app.use(email);
