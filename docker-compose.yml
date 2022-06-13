@@ -25,3 +25,10 @@ services:
       - PORT=8001
     links:
       - db
+  nuxt-app:
+    build: ./nordfin
+    container_name: nuxt-app
+    restart: always
+    environment:
+      - PORT=4000
+    command: 'npm run start'

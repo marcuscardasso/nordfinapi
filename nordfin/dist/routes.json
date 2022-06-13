@@ -1,0 +1,100 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_1c3b98a0"
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/admin/index.vue",
+    "chunkName": "pages/admin/index",
+    "_name": "_b03e8736"
+  },
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/contact.vue",
+    "chunkName": "pages/contact",
+    "_name": "_0396761a"
+  },
+  {
+    "name": "overview",
+    "path": "/overview",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/overview.vue",
+    "chunkName": "pages/overview",
+    "_name": "_250404b6"
+  },
+  {
+    "name": "password",
+    "path": "/password",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/password.vue",
+    "chunkName": "pages/password",
+    "_name": "_beb51e50"
+  },
+  {
+    "name": "profile",
+    "path": "/profile",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/profile.vue",
+    "chunkName": "pages/profile",
+    "_name": "_065c3dfc"
+  },
+  {
+    "name": "signin",
+    "path": "/signin",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/signin.vue",
+    "chunkName": "pages/signin",
+    "_name": "_34e960c2"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_0bbcb3d6"
+  },
+  {
+    "name": "tos",
+    "path": "/tos",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/tos.vue",
+    "chunkName": "pages/tos",
+    "_name": "_1bd748aa"
+  },
+  {
+    "name": "transfer",
+    "path": "/transfer",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/transfer.vue",
+    "chunkName": "pages/transfer",
+    "_name": "_01d573b0"
+  },
+  {
+    "name": "wallet",
+    "path": "/wallet",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/wallet.vue",
+    "chunkName": "pages/wallet",
+    "_name": "_a8af9f14"
+  },
+  {
+    "name": "admin-dashboard",
+    "path": "/admin/dashboard",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/admin/dashboard.vue",
+    "chunkName": "pages/admin/dashboard",
+    "_name": "_329b50b2"
+  },
+  {
+    "name": "admin-user",
+    "path": "/admin/user",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/admin/user.vue",
+    "chunkName": "pages/admin/user",
+    "_name": "_b71f08f0"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/emmanuelnwogbo/work/code/Work/nordfin/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_3bf37365"
+  }
+]
