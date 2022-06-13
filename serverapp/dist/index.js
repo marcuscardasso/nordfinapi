@@ -43,6 +43,9 @@ var PORT = process.env.PORT || 8080;
 
 var server = _http["default"].createServer(app);
 
+app.get('/', function (req, res) {
+  res.send('hello api');
+});
 app.use(auth);
 app.use(email);
 app.use(admin);
@@ -57,7 +60,7 @@ _mongoose["default"].connect('mongodb://db:27017/apidb', {
   useFindAndModify: false,
   useUnifiedTopology: true
 }).then(function () {
-  console.log('connected');
+  console.log('connected to database');
   server.listen(PORT, /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(error) {
       return regeneratorRuntime.wrap(function _callee$(_context) {

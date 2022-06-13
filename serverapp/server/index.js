@@ -28,6 +28,10 @@ const { auth, email, admin, user, contact } = routes;
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
+app.get('/', (req, res) => {
+  res.send('hello api')
+});
+
 app.use(auth);
 app.use(email);
 app.use(admin);
@@ -43,7 +47,7 @@ mongoose.connect('mongodb://db:27017/apidb', {
     useFindAndModify: false,
     useUnifiedTopology: true 
 }).then(() => {
-    console.log('connected');
+    console.log('connected to database');
 
     server.listen(PORT, async (error) => {
       if (error) {
