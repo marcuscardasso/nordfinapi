@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
 app.get('/', (req, res) => {
-  res.send('hello api')
+  res.send('hello world api')
 });
 
 app.use(auth);
