@@ -1,0 +1,50 @@
+{
+  "Accounts": {
+    "description": "Auto imported from components/Accounts.vue"
+  },
+  "Card": {
+    "description": "Auto imported from components/Card.vue"
+  },
+  "Dashboard": {
+    "description": "Auto imported from components/Dashboard.vue"
+  },
+  "DonutChart": {
+    "description": "Auto imported from components/DonutChart.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
+  "InputDuplicator": {
+    "description": "Auto imported from components/InputDuplicator.vue"
+  },
+  "Jumbotron": {
+    "description": "Auto imported from components/Jumbotron.vue"
+  },
+  "Photo": {
+    "description": "Auto imported from components/Photo.vue"
+  },
+  "Popup": {
+    "description": "Auto imported from components/Popup.vue"
+  },
+  "Profile": {
+    "description": "Auto imported from components/Profile.vue"
+  },
+  "SectionThree": {
+    "description": "Auto imported from components/SectionThree.vue"
+  },
+  "SectionTwo": {
+    "description": "Auto imported from components/SectionTwo.vue"
+  },
+  "Sidenav": {
+    "description": "Auto imported from components/Sidenav.vue"
+  },
+  "Transactions": {
+    "description": "Auto imported from components/Transactions.vue"
+  },
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
+  }
+}

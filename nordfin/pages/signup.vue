@@ -12,67 +12,91 @@
                     <div class="signup__containernamearea">
                         <div class="signup__containernameareaname signup__containerformarea">
                             <span>
-                                <input type="text" placeholder=" " v-model="firstname"/>
+                                <input :class="{
+                                    error: firstname_error
+                                }" type="text" placeholder=" " v-model="firstname"/>
                                 <span>
                                     <p>First Name</p>
                                 </span>
+                                <label v-if="firstname_error" class="error">{{firstname_error ? `*${firstname_error}` : ''}}</label>
                             </span>
                         </div>
                         <div class="signup__containernameareaname signup__containerformarea">
                             <span>
-                                <input type="text" placeholder=" " v-model="lastname"/>
+                                <input :class="{
+                                    error: lastname_error
+                                }" type="text" placeholder=" " v-model="lastname"/>
                                 <span>
                                     <p>Last Name</p>
                                 </span>
+                                <label v-if="lastname_error" class="error">{{lastname_error ? `*${lastname_error}` : ''}}</label>
                             </span>
                         </div>
                     </div>
                     <div class="signup__containerformarea">
                         <span>
-                            <input type="email" placeholder=" " v-model="email"/>
+                            <input :class="{
+                                    error: email_error
+                                }" type="email" placeholder=" " v-model="email"/>
                             <span>
                                 <p>Email</p>
                             </span>
+                            <label v-if="email_error" class="error">{{email_error ? `*${email_error}` : ''}}</label>
                         </span>
                     </div>
                      <div class="signup__containerformarea">
                         <span>
-                            <input type="text" placeholder=" " v-model="iban"/>
+                            <input :class="{
+                                    error: iban_error
+                                }" type="text" placeholder=" " v-model="iban"/>
                             <span>
                                 <p>Iban</p>
                             </span>
+                            <label v-if="iban_error" class="error">{{iban_error? `*${iban_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signup__containerformarea">
                         <span>
-                            <input type="phonenumber" placeholder=" " v-model="phonenumber"/>
+                            <input :class="{
+                                    error: phonenum_error
+                                }"
+                                type="phonenumber" placeholder=" " v-model="phonenumber"/>
                             <span>
                                 <p>Phone Number</p>
                             </span>
+                            <label v-if="phonenum_error" class="error">{{phonenum_error ? `*${phonenum_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signup__containerformarea">
                         <span>
-                            <input type="password" placeholder=" " v-model="password"/>
+                            <input :class="{
+                                    error: password_error
+                                }" type="password" placeholder=" " v-model="password"/>
                             <span>
                                 <p>Password</p>
                             </span>
+                            <label v-if="password_error" class="error">{{password_error ? `*${password_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signup__containerformarea">
                         <span>
-                            <input type="password" placeholder=" " v-model="confirmpassword"/>
+                            <input :class="{
+                                    error: confirmpassword_error
+                                }" type="password" placeholder=" " v-model="confirmpassword"/>
                             <span>
                                 <p>Confirm Password</p>
                             </span>
+                            <label v-if="confirmpassword_error" class="error">{{confirmpassword_error ? `*${confirmpassword_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signup__containerform--checkbox">
                         <span><input type="checkbox" v-model="termsagreed"/></span>
                         <span>I agree to the SwissNordic Financials <router-link to="/tos">Terms of Service</router-link></span>
+                        <label v-if="termsagreed_error" class="error terms">{{termsagreed_error ? `*${termsagreed_error}` : ''}}</label>
                     </div>
                     <div class="signup__containerform--button">
-                        <button @click="signup">Create Account</button>
+                        <button v-if="!loading" @click="signup">Create Account</button>
+                        <button v-if="loading" class="loading"></button>
                     </div>
                 </div>
             </div>
@@ -87,6 +111,7 @@
 </template>
 
 <script>
+    import * as EmailValidator from 'email-validator';
     import urlMixin from '@/mixins/url.js';
 
     export default {
@@ -99,7 +124,16 @@
                 phonenumber: '',
                 password: '',
                 confirmpassword: '',
-                termsagreed: false
+                termsagreed: false,
+                firstname_error: false,
+                lastname_error: false,
+                email_error: false,
+                iban_error: false,
+                phonenum_error: false,
+                password_error: false,
+                confirmpassword_error: false,
+                termsagreed_error: false,
+                loading: false
             }
         },
         mixins: [urlMixin],
@@ -114,21 +148,40 @@
                 this.$store.dispatch('storeUser', user_details);
             },           
             authenticate(credentials, route) {
+                this.loading = true;
                 fetch(`${this.baseUrl}/${route}`, {
                     method: "POST",
                     body: JSON.stringify(credentials),
                     headers: {"Content-type": "application/json; charset=UTF-8"}
                 })
-                .then(response => response.json()) 
+                .then(response => {
+                    return response.json();
+                }) 
                 .then(json => {
-                    const user = json.user;
-                    const token = json.token;
-                    this.setUser(user, token);
+                    if (json.error) {
+                        this.loading = false;
+                        if (json.error.name === 'MongoError') {
+                            if (json.error.keyPattern.email) {
+                                this.email_error = `email is already in use`
+                            }
+
+                            if (json.error.keyPattern.phonenumber) {
+                                this.phonenum_error = `phone number is already in use`
+                            }
+                        }
+
+                        throw 'there is an error here';
+                    } else {
+                        this.loading = false;
+                        const user = json.user;
+                        const token = json.token;
+                        this.setUser(user, token);
+                    }
                 })
                 .then(() => {
                     this.$router.push('/wallet');
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err, 'there is an errro'));
             },            
             moveToRoute(route) {
                 this.$router.push(route)
@@ -142,6 +195,7 @@
                     phonenumber,
                     password,
                     confirmpassword,
+                    termsagreed
                 } = this;
 
                 const credentials = {
@@ -155,8 +209,127 @@
                     accountPlan: 'Basic'
                 }
 
-                this.authenticate(credentials, 'api/signup');
+                if (!firstname.length) {
+                    this.firstname_error = 'first name required';
+                } else {
+                    this.firstname_error = false;
+                }
+
+                if (!lastname.length) {
+                    this.lastname_error = 'last name required'
+                } else {
+                    this.lastname_error = false
+                }
+
+                if (!email.length) {
+                    this.email_error = 'email required'
+                } else {
+                    this.email_error = false
+                }
+
+                if (!iban.length) {
+                    this.iban_error = 'iban required'
+                } else {
+                    this.iban_error = false
+                }
+
+                if (!phonenumber.length) {
+                    this.phonenum_error = 'phonenumber required'
+                } else {
+                    this.phonenum_error = false
+                }
+
+                if (!password.length) {
+                    this.password_error = 'password should be 6 characters or more'
+                } else {
+                    this.password_error = false
+                }
+
+                if (!confirmpassword.length) {
+                    this.confirmpassword_error = 'confirm password should be 6 characters or more'
+                } else {
+                    this.confirmpassword_error = false
+                }
+
+                if (confirmpassword !== password && confirmpassword.length >= 6 && password.length >=6) {
+                    this.confirmpassword_error = 'confirm password should equal password';
+                    this.password_error = 'confirm password should equal password'
+                }
+
+                if (!termsagreed) {
+                    this.termsagreed_error = 'terms of service should be adhered to';
+                }
+
+                const {
+                    termsagreed_error,
+                    firstname_error,
+                    lastname_error,
+                    email_error,
+                    iban_error,
+                    phonenum_error,
+                    password_error,
+                    confirmpassword_error,
+                } = this;
+
+                if (!termsagreed_error && 
+                    !firstname_error && 
+                    !lastname_error && 
+                    !email_error && 
+                    !iban_error && 
+                    !phonenum_error && 
+                    !password_error && 
+                    !confirmpassword_error) {
+                        this.authenticate(credentials, 'api/signup');
+                    }
             },  
+        },
+        watch: {
+            firstname() {
+                this.firstname_error = false;
+            },
+            lastname() {
+                this.lastname_error = false;
+            },
+            email(newValue, oldValue) {
+                EmailValidator.validate(newValue) ? this.email_error = false : this.email_error = 'email is invalid';
+            },
+            iban() {
+                this.iban_error = false;
+            },
+            phonenumber() {
+                this.phonenum_error = false;
+            },
+            password(newValue, oldValue) {
+                if (newValue.length < 6) {
+                    this.password_error = 'password should be 6 characters or more';
+                } else if (newValue !== this.confirmpassword) {
+                    this.password_error = 'password should equal confirm  password'
+                } else if (newValue === this.confirmpassword) {
+                    this.password_error = false;
+                    this.confirmpassword_error = false;
+                } else {
+                    this.password_error = false;
+                }
+            },
+            confirmpassword(newValue, oldValue) {
+                if (newValue.length < 6) {
+                    this.confirmpassword_error = 'password should be 6 characters or more';
+                } else if (newValue !== this.password) {
+                    this.confirmpassword_error = 'confirm password should equal password';
+                } else if (newValue === this.password) {
+                    this.password_error = false;
+                    this.confirmpassword_error = false;
+                } else {
+                    this.confirmpassword_error = false;
+                }
+            },
+            termsagreed(newValue) {
+                if (newValue === false) {
+                    this.termsagreed_error = 'terms of service should be adhered to';
+                } else {
+                    this.termsagreed_error = false;
+                }
+            }
         }
     }
 </script>
@@ -166,6 +339,20 @@
     @return calc(
       #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
     );
+}
+
+@keyframes spinFive {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    transform: rotate(360deg);  
+  }
 }
 
 .signup {
@@ -231,6 +418,7 @@
     &__containerform {
 
         &--checkbox {
+            position: relative;
             font-size: #{scaleValue(13)};
             margin-bottom: #{scaleValue(20)}; 
             margin-top: #{scaleValue(40)}; 
@@ -239,7 +427,7 @@
 
             @media only screen and (max-width: 414px) { 
                 font-size: #{scaleValue(65)};
-                margin-bottom: #{scaleValue(70)}; 
+                margin-bottom: #{scaleValue(100)}; 
                 margin-top: #{scaleValue(70)}; 
             }
 
@@ -259,6 +447,10 @@
                 text-decoration: none;
                 color: #007994;
                 cursor: pointer;
+
+                @media only screen and (max-width: 414px) { 
+                    display: block;
+                }
             }
         }
 
@@ -308,6 +500,10 @@
                     color: #fff;
                     z-index: 2;
                     font-size: #{scaleValue(14)}; 
+
+                    &.error {
+                        border: solid .1px red;
+                    }
 
                     @media only screen and (max-width: 414px) { 
                         height:  #{scaleValue(200)};
@@ -399,7 +595,7 @@
 
     &__containernameareaname {
         position: relative;
-        flex-basis: #{scaleValue(240)}; 
+        flex-basis: #{scaleValue(240)};
 
         @media only screen and (max-width: 414px) { 
             flex-basis: #{scaleValue(680)}; 
@@ -413,6 +609,10 @@
             justify-content: center;
             margin-top: #{scaleValue(28)}; 
 
+            @media only screen and (max-width: 414px) { 
+                 margin-top: #{scaleValue(340)}; 
+            } 
+
             & p {
                 margin-right: #{scaleValue(10)}; 
             }
@@ -423,6 +623,49 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+label.error {
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: #{scaleValue(-36)};
+    padding-left: #{scaleValue(10)};
+    color: red;
+    text-transform: capitalize;
+    font-size: #{scaleValue(13)};
+
+    @media only screen and (max-width: 414px) { 
+       display: none;
+    } 
+
+    &.terms {
+        bottom: #{scaleValue(-18)};
+    }
+}
+
+.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(#007994, .3) !important;
+
+    &:before {
+        content: "";
+        width: #{scaleValue(35)};
+        height: #{scaleValue(35)};
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff #fff #fff #1d1f2b;
+        transition: all 0.5s ease-in;
+        background: transparent;
+        position: absolute;
+        top: 12%;
+        left: 45%;
+        animation: spinFive 1s linear 1s infinite;
     }
 }
 </style>

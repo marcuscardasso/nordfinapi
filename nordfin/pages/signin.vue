@@ -15,6 +15,7 @@
                             <span>
                                 <p>Email</p>
                             </span>
+                            <label v-if="email_error" class="error">{{email_error ? `*${email_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signin__containerformarea">
@@ -23,10 +24,12 @@
                             <span>
                                 <p>Password</p>
                             </span>
+                            <label v-if="password_error" class="error">{{password_error ? `*${password_error}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signin__containerform--button">
-                        <button @click="signin">Login</button>
+                        <button v-if="!loading" @click="signin">Login</button>
+                        <button v-if="loading" class="loading"></button>
                     </div>
                 </div>
             </div>
@@ -41,6 +44,7 @@
 </template>
 
 <script>
+    import * as EmailValidator from 'email-validator';
     import urlMixin from '@/mixins/url.js';
 
     export default {
@@ -48,6 +52,9 @@
             return {
                 email: '',
                 password: '',
+                email_error: false,
+                password_error: false,
+                loading: false
             }
         },
         mixins: [urlMixin],
@@ -62,6 +69,7 @@
                 this.$store.dispatch('storeUser', user_details);
             },             
             authenticate(credentials, route) {
+                this.loading = true;
                 fetch(`${this.baseUrl}/${route}`, {
                     method: "POST",
                     body: JSON.stringify(credentials),
@@ -69,9 +77,18 @@
                 })
                 .then(response => response.json()) 
                 .then(json => {
-                    const user = json.user;
-                    const token = json.token;
-                    this.setUser(user, token)
+                    if (json.error) {
+                        this.loading = false;
+                        this.email_error = 'no such user exists';
+                        this.password_error = 'no such user exists'
+
+                        throw 'there is an error here';
+                    } else {
+                        this.loading = true;
+                        const user = json.user;
+                        const token = json.token;
+                        this.setUser(user, token)
+                    }
                 })
                 .then(() => {
                     this.$router.push('/wallet');
@@ -92,8 +109,31 @@
                     password,
                 }
 
-                this.authenticate(credentials, 'api/signin');
+                if (!email.length) {
+                    this.email_error = 'email required';
+                }
+
+                if (!password.length) {
+                    this.password_error = 'password required';
+                }
+
+                const {
+                    email_error,
+                    password_error
+                } = this;
+
+                if (!email_error && !password_error) {
+                    this.authenticate(credentials, 'api/signin');
+                }
             }
+        },
+        watch: {
+            email(newValue, oldValue) {
+                EmailValidator.validate(newValue) ? this.email_error = false : this.email_error = 'email is invalid';
+            },
+            password() {
+                this.password_error = false;
+            }           
         }
     }
 </script>
@@ -103,6 +143,20 @@
     @return calc(
       #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
     );
+}
+
+@keyframes spinFive {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    transform: rotate(360deg);  
+  }
 }
 
 .signin {
@@ -360,6 +414,49 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+label.error {
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: #{scaleValue(-36)};
+    padding-left: #{scaleValue(10)};
+    color: red;
+    text-transform: capitalize;
+    font-size: #{scaleValue(13)};
+
+    @media only screen and (max-width: 414px) { 
+       display: none;
+    } 
+
+    &.terms {
+        bottom: #{scaleValue(-18)};
+    }
+}
+
+.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(#007994, .3) !important;
+
+    &:before {
+        content: "";
+        width: #{scaleValue(35)};
+        height: #{scaleValue(35)};
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff #fff #fff #1d1f2b;
+        transition: all 0.5s ease-in;
+        background: transparent;
+        position: absolute;
+        top: 12%;
+        left: 45%;
+        animation: spinFive 1s linear 1s infinite;
     }
 }
 </style>

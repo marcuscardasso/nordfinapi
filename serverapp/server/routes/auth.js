@@ -28,7 +28,7 @@ auth.post('/api/signup',
                 res.status(201).send({ user, token });
 
             } catch (e) {
-                res.status(400).send(e);
+                res.status(400).send({error: e});
             }
         });
 
@@ -70,9 +70,7 @@ auth.post('/api/signin',
                     
                     res.send({ user, token });
                 } catch (e) {
-                    res.status(400).send({
-                        message: 'no such user'
-                    })
+                    res.status(400).send({error: e})
                 }
 
 });

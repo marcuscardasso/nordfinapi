@@ -12,6 +12,7 @@
     "apexcharts": "^3.35.3",
     "browser-or-node": "^2.0.0",
     "core-js": "^3.19.3",
+    "email-validator": "^2.0.4",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",
     "vue-apexcharts": "^1.6.2",

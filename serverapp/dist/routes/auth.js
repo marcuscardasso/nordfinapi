@@ -71,7 +71,9 @@ auth.post('/api/signup', body('firstname').isLength({
           case 13:
             _context.prev = 13;
             _context.t0 = _context["catch"](4);
-            res.status(400).send(_context.t0);
+            res.status(400).send({
+              error: _context.t0
+            });
 
           case 16:
           case "end":
@@ -184,7 +186,7 @@ auth.post('/api/signin', body('email').isLength({
             _context3.prev = 13;
             _context3.t0 = _context3["catch"](3);
             res.status(400).send({
-              message: 'no such user'
+              error: _context3.t0
             });
 
           case 16:

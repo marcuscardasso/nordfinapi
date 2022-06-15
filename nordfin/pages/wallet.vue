@@ -128,7 +128,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="wallet__right"></div>
+                <div class="wallet__right">
+                </div>
             </div>
         </template>
     </Dashboard>
