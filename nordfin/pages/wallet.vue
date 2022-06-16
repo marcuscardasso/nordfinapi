@@ -2,7 +2,14 @@
   <div>
     <Dashboard :title="user ? `${user.firstname} ${user.lastname}` : ''" :openslide="openslide">
         <template v-slot:base>
-            <div class="wallet">
+            <div class="wallet wallet__main">
+                <div class="wallet__popup" v-if="popup">
+                    <div class="wallet__popup--body">
+                        <h2>Message:</h2>
+                        <p>{{message}}</p>
+                        <button @click="popup = false">I understand</button>
+                    </div>
+                </div>
                 <div class="wallet__left">
                     <h2 class="wallet__left--h2">Wallet</h2>
                     <div class="wallet__left--balance">
@@ -129,6 +136,40 @@
                     </div>
                 </div>
                 <div class="wallet__right">
+                    <div class="wallet__quicktransfer">
+                        <h3>Withdraw</h3>
+                        <div class="wallet__quicktransfer--body">
+                            <div class="wallet__quicktransfer--inputarea">
+                                <label>Bank</label>
+                                <input placeholder="Bank to withdraw to" v-model="bank" :class="{
+                                    error: bankerror
+                                }"/>
+                            </div>
+                            <div class="wallet__quicktransfer--inputarea">
+                                <label>Amount</label>
+                                <input placeholder="Amount to withdraw" v-model="amount" :class="{
+                                    error: amounterror
+                                }"/>
+                            </div>
+                            <div class="wallet__quicktransfer--inputarea">
+                                <label>Account number</label>
+                                <input placeholder="Account number to withdraw to" v-model="accountnum" :class="{
+                                    error: accountnumerror
+                                }"/>
+                            </div>
+                            <div class="wallet__quicktransfer--inputarea wallet__quicktransfer--detailarea">
+                                <div class="wallet__quicktransfer--detail">
+                                    <span>Network fee: ${{fee}}</span>
+                                </div>
+                                <div class="wallet__quicktransfer--detail">
+                                    <span v-if="amount >= 115">Amount to send: ${{withdrawtotal.toLocaleString('en-US')}}</span>
+                                    <span v-if="amount < 115" class="red">Amount to send: <span>{{withdrawtotal}}</span></span>
+                                </div>
+                                <button v-if="!loading" @click="submitWithdrawRequest">Withdraw</button>
+                                <button v-if="loading" class="loading"></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </template>
@@ -144,10 +185,17 @@
             return {
                 transPage: 'all',
                 transactionForm: 'Withdraw',
-                bank: null,
-                amount: null,
-                recepient: null,
+                bank: '',
+                amount: '',
+                accountnum: '',
+                fee: 15,
+                bankerror: false,
+                amounterror: false,
+                accountnumerror: false,
                 slide: null,
+                popup: false,
+                loading: false,
+                message: ''
             }
         },
         mixins: [userMixin],
@@ -167,6 +215,74 @@
                 }
                 return input;
             },
+            toggletransactionform(value) {
+                this.transactionform = value;
+            },
+            submitWithdrawRequest() {
+                const { bank, amount, accountnum, withdrawtotal } = this;
+
+                if (bank.length && amount.length && accountnum.length) {
+                    const requestbody = {
+                        bank,
+                        withdrawtotal, 
+                        accountnum
+                    }
+
+                    this.withdrawApiRequest(requestbody);
+                } else {
+                    if (!bank.length) {
+                        this.bankerror = true;
+                    }
+
+                    if (!amount.length) {
+                        this.amounterror = true;
+                    }
+
+                    if (!accountnum.length) {
+                        this.accountnumerror = true;
+                    }
+                }
+            },
+            withdrawApiRequest(requestbody) {
+                const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+                this.loading = true;
+
+                fetch(`${this.baseUrl}/api/request`, {
+                    method: "POST",
+                    body: JSON.stringify(requestbody),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "Authorization": user_token
+                    }
+                }).then(response => {
+                    return response.json();
+                }).then(json => {
+                    //console.log(json, 'request sent');
+                    this.loading = false;
+                    this.message = this.user.requirement
+                    this.popup = true;
+                }).catch(err => console.log(err, 'there is an error'));
+            }
+        },
+        watch: {
+            bank(newValue, oldValue) {
+                newValue.length ? this.bankerror = false : this.bankerror = true;
+            },
+            amount(newValue, oldValue) {
+                newValue.length ? this.amounterror = false : this.amounterror = true;
+            },
+            accountnum(newValue, oldValue) {
+                newValue.length ? this.accountnumerror = false : this.accountnumerror = true;
+            }
+        },
+        computed: {
+            withdrawtotal() {
+                if (this.amount >= 115) {
+                    return this.amount - this.fee;
+                } else {
+                    return 'Must be more than $100';
+                }
+            }
         }
     }
 </script>
@@ -178,7 +294,68 @@
         );
     }
 
+    @keyframes spinFive {
+        0% {
+            transform: rotate(0deg);
+        }
+  
+        50% {
+            opacity: 0;
+        }
+  
+        100% {
+            transform: rotate(360deg);  
+        }
+    }
+
+
     .wallet {
+        
+        &__main {
+            display: flex;
+        }
+
+        &__popup {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0,0,0,.5);
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+
+            z-index: 10;
+
+            &--body {
+                background: #fff;
+                color: #000000;
+                height: #{scaleValue(200)};
+                width: #{scaleValue(400)};
+                padding: #{scaleValue(20)} #{scaleValue(30)};
+                margin-top: #{scaleValue(30)};
+                border-radius: .7rem;
+
+                & h2 {
+                    font-weight: 400;
+                }
+
+                & p {
+                    font-size: #{scaleValue(17)};
+                    margin-top: #{scaleValue(17)};
+                }
+
+                & button {
+                    background: #474DFF;
+                    color: #fff;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    padding: #{scaleValue(17)};
+                    font-size: #{scaleValue(17)};
+                    margin-top: #{scaleValue(17)};
+                }
+            }
+        }
 
         &__left {
 
@@ -400,5 +577,105 @@
                 }
             }
         }
+
+        &__right {
+            padding-left: #{scaleValue(60)};
+            padding-top: #{scaleValue(55)};
+        }
+
+        &__quicktransfer {
+            color: #000000;
+            border-radius: 1rem;
+            background: #fff;
+            padding: #{scaleValue(30)};
+            box-shadow: -1px 1px 19px 10px rgba(187,0,255, 0.2);
+            -webkit-box-shadow: -1px 1px 19px 10px rgba(187,0,255, 0.2);
+            -moz-box-shadow: -1px 1px 19px 10px rgba(187,0,255, 0.2);
+
+            & h3 {
+                font-weight: 400;
+                font-size: #{scaleValue(25)};
+                margin-bottom: #{scaleValue(3)};
+            }
+
+            &--inputarea {
+                display: flex;
+                flex-direction: column;
+                width: #{scaleValue(350)};
+
+                & label {
+                    font-weight: 400;
+                    display: block;
+                    margin: #{scaleValue(25)} 0 #{scaleValue(10)} 0;
+                    font-size: #{scaleValue(17)};
+                    color: rgba(0,0,0,.4);
+                }
+
+                & input {
+                    border-radius: .4rem;
+                    border: 1.2px solid rgba(0,0,0,.5);
+                    padding: #{scaleValue(17)};
+                    font-size: #{scaleValue(17)};
+
+                    &.error {
+                        border: 1.2px solid red;
+                    }
+
+                    &::placeholder {
+                        font-size: #{scaleValue(15)}
+                    }
+                }
+
+                & button {
+                    background: #474DFF;
+                    color: #fff;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    padding: #{scaleValue(17)};
+                    font-size: #{scaleValue(17)};
+                    margin: #{scaleValue(17)} 0;
+                }
+            }
+
+            &--detailarea {
+                padding: #{scaleValue(17)} 0;
+            }
+
+            &--detail {
+                margin-top: #{scaleValue(10)};
+            }
+        }
     }
+
+.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: #{scaleValue(50)};
+    background: rgba(#474DFF, .4) !important;
+
+    &:before {
+        content: "";
+        width: #{scaleValue(35)};
+        height: #{scaleValue(35)};
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff #fff #fff #1d1f2b;
+        transition: all 0.5s ease-in;
+        background: transparent;
+        position: absolute;
+        top: 12%;
+        left: 45%;
+        animation: spinFive 1s linear 1s infinite;
+    }
+}    
+
+.red {
+   
+   & span {
+        color: red;
+        font-size: #{scaleValue(12)};
+   }
+}
 </style>

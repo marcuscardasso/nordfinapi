@@ -192,7 +192,7 @@
                             <span>Wallet</span>
                         </router-link>
                     </div>
-                    <div class="wallet__sidenav--item" :class="{
+                   <!-- <div class="wallet__sidenav--item" :class="{
                         'current': currentroute === 'overview'
                     }">
                         <router-link to="/overview">
@@ -203,7 +203,7 @@
                             </span>
                             <span>Stats</span>
                         </router-link>
-                    </div>
+                    </div>-->
                     <div class="wallet__sidenav--item" :class="{
                         'current': currentroute === 'transfer'
                     }">

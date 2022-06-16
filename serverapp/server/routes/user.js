@@ -72,4 +72,6 @@ user.patch('/api/edituserpw', authenticator, async (req, res) => {
     }
 })
 
+
+
 export default user;

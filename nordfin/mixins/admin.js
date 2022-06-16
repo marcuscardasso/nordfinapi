@@ -50,7 +50,7 @@ export default {
             .then(response => response.json())
             .then(json => {
                   const users = json.users;
-                  console.log(users)
+                  console.log(users, 'the users are here')
                   this.$store.dispatch('storeUsers', users);
             });
           },

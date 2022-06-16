@@ -3,13 +3,13 @@
     <div class="profile">
                 <div class="profile__feedback" v-if="saved">
                     <p><span class="profile__header--name">{{ 
-                        `${user.firstname} ${user.lastname}'s`
+                        `${client.firstname} ${client.lastname}'s`
                      }}</span> details updated</p>
                 </div>
                 <div class="profile__header">
                     <h2 class="profile__header--h2">Profile</h2>
                     <p class="profile__header--p" v-if="user">Update <span class="profile__header--name">{{ 
-                        `${user.firstname} ${user.lastname}'s`
+                        `${client.firstname} ${client.lastname}'s`
                      }}</span> details here</p>
                 </div>
                     
@@ -45,7 +45,7 @@
                         <div class="profile__section">
                             <div class="profile__contentarea profile__contentarea--stretch">
                                 <span class="profile__contentarea--label">
-                                    <p>Requirement</p>
+                                    <p>Add Requirement</p>
                                 </span>
                                 <span class="profile__contentarea--input">
                                     <textarea v-model="requirement"></textarea>
@@ -133,27 +133,28 @@ export default {
             })
         }
     },
-    beforeMount() {
-        this.getUsers();
-    },
     mounted() {
-        console.log(this.$route.query.id);
-        console.log(this.user, 'user here');
-        
-        if (this.user !== null) {
-            this.accountPlan = this.user.accountPlan; 
-            this.balance = this.user.balance;
-        }
+        const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+
+        fetch(`${this.baseUrl}/api/admingetuser?id=${this.$route.query.id}`, {
+                method: "GET",
+                headers: {
+                  "Content-type": "application/json; charset=UTF-8",
+                  "Authorization": user_token
+                }
+            })
+            .then(response => response.json())
+            .then(json => {
+                  this.$store.dispatch('storeClient', json.user);
+
+                  this.accountPlan = this.client.accountPlan; 
+                  this.balance = this.client.balance;
+                  this.client.requirement ? this.requirement = this.client.requirement : this.requirement = '';
+            });
     },
     computed: {
-        transactions() {
-            return this.$store.getters['userEdit/transactions']
-        },
-        notifications() {
-            return this.$store.getters['userEdit/notifications']
-        },
-        user() {
-            return this.$store.getters.users ? this.$store.getters.users.filter(user => `${user._id}` == this.$route.query.id)[0] : null;
+        client() {
+            return this.$store.getters.client
         }
     }
 }
