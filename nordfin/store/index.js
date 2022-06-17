@@ -1,7 +1,9 @@
 export const state = () => ({
     user: null,
     users: [],
-    client: {}
+    client: {},
+    clientNotifications: [],
+    clientTransactions: [],
   });
 
 export const mutations = {
@@ -13,6 +15,12 @@ export const mutations = {
     },
     STORE_CLIENT(state, client) {
       state.client = client
+    },
+    STORE_NOTIFICATIONS(state, notifications) {
+      state.clientNotifications = [...notifications]
+    },
+    STORE_TRANSACTIONS(state, transactions) {
+      state.clientTransactions = [...transactions]
     }
   }
 
@@ -25,6 +33,12 @@ export const actions = {
     },
     storeClient({commit}, client) {
       commit('STORE_CLIENT', client)
+    },
+    storeNotifications({commit}, notifications) {
+      commit('STORE_NOTIFICATIONS', notifications)
+    },
+    storeTransactions({commit}, transactions) {
+      commit('STORE_TRANSACTIONS', transactions)
     }
   }
 
@@ -37,5 +51,11 @@ export const getters = {
     },
     client(state) {
       return state.client
+    },
+    clientNotifications(state) {
+      return state.clientNotifications
+    },
+    clientTransactions(state) {
+      return state.clientTransactions
     }
 }

@@ -1,7 +1,7 @@
 export default {
     computed: {
         baseUrl() {
-            return `https://api.swissnordic.com`; //http://138.201.184.155:8001
+            return `https://api.swissnordic.com`;
         },
     }
 }

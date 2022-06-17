@@ -156,16 +156,16 @@
                             </span>
                         </div>
                     </div>
-                    <div class="wallet__headersec" @click="openslide('messages')">
+                    <!--<div class="wallet__headersec" @click="openslide('messages')">
                         <div class="wallet__headersec--dropdown">
-                            <!--<span class="notification">10</span>-->
+                            <!--<span class="notification">10</span>
                             <span class="svg">
                                 <svg>
                                     <use xlink:href="@/assets/imgs/sprite.svg#icon-message-square" />
                                 </svg>
                             </span>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="wallet__headersec" @click="$router.push('/wallet')">
                         <div class="wallet__headersec--dropdown">
                             <span class="svg">

@@ -41,8 +41,7 @@ admin.patch('/api/patchuser', authenticator, async (req, res) => {
     const admin = req.user;
 
     if (admin.admin) {
-        const { userid } = req.query
-        console.log(userid, req.body)
+        const { userid } = req.query;
 
         User.findById(userid).then(async user => {
             const updates = Object.keys(req.body);
@@ -59,28 +58,32 @@ admin.patch('/api/patchuser', authenticator, async (req, res) => {
             if (!isValidOperation) {
                 return res.status(400).send({ error: 'Invalid updates!' })
             }
-
-            console.log(req.body.transactions)
         
             try {
                 updates.forEach((update) => {
                     if (update === 'transactions') {
                         const { transactions } = req.body;
 
-                        const transacs = user.transactions;
-                        user.transactions = [...transacs, ...transactions];
+                        if (transactions.length) {
+                            const transacs = user.transactions;
+                            user.transactions = [...transacs, ...transactions];
+                        }
 
                     } else if (update === 'notifications') {
                         const { notifications } = req.body;
 
-                        const notifs = user.notifications;
-                        user.notifications = [...notifs, ...notifications]
+                        if (notifications.length) {
+                            const notifs = user.notifications;
+                            user.notifications = [...notifs, ...notifications]
+                        }
                     } else {
                         user[update] = req.body[update]
                     }
                 })
                 await user.save()
-                res.send(user)
+                res.send({
+                    user_updated: user
+                })
             } catch (e) {
                 console.log(e);
                 res.status(400).send(e)

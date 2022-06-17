@@ -97,6 +97,9 @@ var userSchema = new mongoose.Schema({
     notifcontent: {
       type: String
     },
+    notifId: {
+      type: String
+    },
     viewed: {
       type: Boolean
     }

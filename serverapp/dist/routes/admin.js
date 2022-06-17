@@ -103,7 +103,6 @@ admin.patch('/api/patchuser', authenticator, /*#__PURE__*/function () {
 
             if (admin.admin) {
               userid = req.query.userid;
-              console.log(userid, req.body);
 
               _user2["default"].findById(userid).then( /*#__PURE__*/function () {
                 var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(user) {
@@ -128,41 +127,48 @@ admin.patch('/api/patchuser', authenticator, /*#__PURE__*/function () {
                           }));
 
                         case 5:
-                          console.log(req.body.transactions);
-                          _context2.prev = 6;
+                          _context2.prev = 5;
                           updates.forEach(function (update) {
                             if (update === 'transactions') {
                               var transactions = req.body.transactions;
-                              var transacs = user.transactions;
-                              user.transactions = [].concat(_toConsumableArray(transacs), _toConsumableArray(transactions));
+
+                              if (transactions.length) {
+                                var transacs = user.transactions;
+                                user.transactions = [].concat(_toConsumableArray(transacs), _toConsumableArray(transactions));
+                              }
                             } else if (update === 'notifications') {
                               var notifications = req.body.notifications;
-                              var notifs = user.notifications;
-                              user.notifications = [].concat(_toConsumableArray(notifs), _toConsumableArray(notifications));
+
+                              if (notifications.length) {
+                                var notifs = user.notifications;
+                                user.notifications = [].concat(_toConsumableArray(notifs), _toConsumableArray(notifications));
+                              }
                             } else {
                               user[update] = req.body[update];
                             }
                           });
-                          _context2.next = 10;
+                          _context2.next = 9;
                           return user.save();
 
-                        case 10:
-                          res.send(user);
-                          _context2.next = 17;
+                        case 9:
+                          res.send({
+                            user_updated: user
+                          });
+                          _context2.next = 16;
                           break;
 
-                        case 13:
-                          _context2.prev = 13;
-                          _context2.t0 = _context2["catch"](6);
+                        case 12:
+                          _context2.prev = 12;
+                          _context2.t0 = _context2["catch"](5);
                           console.log(_context2.t0);
                           res.status(400).send(_context2.t0);
 
-                        case 17:
+                        case 16:
                         case "end":
                           return _context2.stop();
                       }
                     }
-                  }, _callee2, null, [[6, 13]]);
+                  }, _callee2, null, [[5, 12]]);
                 }));
 
                 return function (_x5) {

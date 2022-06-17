@@ -19,7 +19,30 @@
                 <p>fee</p>
             </div>
         </div>  
-        <div class="inputduplicator__transactionlist">      
+        <div class="inputduplicator__transactionlist">
+            <div class="inputduplicator__transactionlistitem" 
+                v-for="transact in clientTransactionsDB"
+                @key="transact.transactionId"
+                >
+                <div class="inputduplicator__transactionlistitem--section">
+                    <p class="deposit" v-if="transact.transactionType === 'deposit'">+$ {{ transact.amount }}</p>
+                    <p class="transfer" v-if="transact.transactionType === 'transfer'">-$ {{ transact.amount }}</p>
+                    <p class="withdrawal" v-if="transact.transactionType === 'withdrawal'">-$ {{ transact.amount }}</p>
+                </div>
+                <div class="inputduplicator__transactionlistitem--section">
+                    <p>{{ transact.dateTime }}</p>
+                </div>
+                <div class="inputduplicator__transactionlistitem--section">
+                    <p>{{ transact.transactionType }}</p>
+                </div>
+                <div class="inputduplicator__transactionlistitem--section">
+                    <p>Trans ID: {{ transact.transactionId }}</p>
+                </div>
+                <div class="inputduplicator__transactionlistitem--section">
+                    <p>${{ transact.fee }}</p>
+                </div>
+                <!--<span class="inputduplicator__transactionlistitem--remove" @click="removeTransaction(transact.transactionId)">X</span>-->
+            </div>     
             <div class="inputduplicator__transactionlistitem" 
                 v-for="transact in transactions"
                 @key="transact.transactionId"
@@ -68,13 +91,25 @@
         </div>
         <div class="inputduplicator__section--button">
             <span></span>
-            <span class="btn" @click="addTransaction">Add item</span>
+            <span class="btn" @click="addTransaction">Add Transaction</span>
         </div>
     </div>
 
     <div v-if="name === 'add notifications'">
         <h4 class="inputduplicator--h4">{{name}}</h4>
-        <div class="inputduplicator__transactionlist">      
+        <div class="inputduplicator__transactionlist">  
+             <div class="inputduplicator__transactionlistitem column" 
+                v-for="notif in clientNotificationsDB"
+                @key="notif.notifId"
+                >
+                <div class="inputduplicator__transactionlistitem--section column">
+                    <span class="label">Date:</span><p>{{ notif.notifdate }}</p>
+                </div>
+                <div class="inputduplicator__transactionlistitem--section column">
+                    <span class="label">Content: </span><p>{{ notif.notifcontent }}</p>
+                </div>
+                <!--<span class="inputduplicator__transactionlistitem--remove" @click="removeNotification(notif.notifId)">X</span>-->
+            </div>    
             <div class="inputduplicator__transactionlistitem column" 
                 v-for="notif in notifications"
                 @key="notif.notifId"
@@ -102,7 +137,7 @@
         </div>
         <div class="inputduplicator__section--button">
             <span></span>
-            <span class="btn" @click="addNotification">Add item</span>
+            <span class="btn" @click="addNotification">Add Notification</span>
         </div>
     </div>
   </div>
@@ -110,7 +145,7 @@
 
 <script>
 export default {
-    props: ['name'],
+    props: ['name', 'clientTransactionsDB', 'clientNotificationsDB'],
     data() {
         return {
             amount: null,
@@ -154,7 +189,10 @@ export default {
                 notifId: Math.random().toString().substr(2, 6),
                 viewed: false
             }
-        }
+        },
+        client() {
+            return this.$store.getters.client
+        }        
     },
     methods: {
         addTransaction() {
@@ -162,7 +200,7 @@ export default {
             transactions.push(this.transaction);
             this.transactions = transactions;
 
-            this.$store.dispatch('userEdit/storeTransactions', this.transactions);
+            this.$store.dispatch('storeTransactions', this.transactions);
 
             this.amount = null;
             this.transactionType = null;
@@ -177,14 +215,14 @@ export default {
             });
             this.transactions = filteredTransacs;
 
-            this.$store.dispatch('userEdit/storeTransactions', this.transactions);
+            this.$store.dispatch('storeTransactions', this.transactions);
         },
         addNotification() {
             const notifications = this.notifications;
             notifications.push(this.notification);
             this.notifications = notifications;
 
-            this.$store.dispatch('userEdit/storeNotifications', this.notifications);
+            this.$store.dispatch('storeNotifications', this.notifications);
 
             this.notifdate = null;
             this.notifcontent = null;
@@ -195,7 +233,7 @@ export default {
                 return item.notifId !== id;
             });
             this.notifications = filteredNotifs;
-            this.$store.dispatch('userEdit/storeNotifications', this.notifications);
+            this.$store.dispatch('storeNotifications', this.notifications);
         },
     }
 }

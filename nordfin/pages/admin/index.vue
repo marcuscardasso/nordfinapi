@@ -26,7 +26,8 @@
                         </span>
                     </div>
                     <div class="signin__containerform--button">
-                        <button @click="signin">Login</button>
+                        <button v-if="!loading" @click="signin">Login</button>
+                        <button v-if="loading" class="loading"></button>
                     </div>
                 </div>
             </div>
@@ -48,6 +49,7 @@ import adminMixin from '@/mixins/admin.js';
             return {
                 email: '',
                 password: '',
+                loading: false
             }
         },
         mixins: [adminMixin],
@@ -65,6 +67,8 @@ import adminMixin from '@/mixins/admin.js';
                     email,
                     password,
                 }
+
+                this.loading = true;
 
                 this.authenticate(credentials, 'api/signinadmin');
             },
@@ -86,6 +90,20 @@ import adminMixin from '@/mixins/admin.js';
     @return calc(
       #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
     );
+}
+
+@keyframes spinFive {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    transform: rotate(360deg);  
+  }
 }
 
 .signin {
@@ -343,6 +361,30 @@ import adminMixin from '@/mixins/admin.js';
                 cursor: pointer;
             }
         }
+    }
+}
+
+.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(#007994, .3) !important;
+
+    &:before {
+        content: "";
+        width: #{scaleValue(35)};
+        height: #{scaleValue(35)};
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff #fff #fff #1d1f2b;
+        transition: all 0.5s ease-in;
+        background: transparent;
+        position: absolute;
+        top: 12%;
+        left: 45%;
+        animation: spinFive 1s linear 1s infinite;
     }
 }
 </style>

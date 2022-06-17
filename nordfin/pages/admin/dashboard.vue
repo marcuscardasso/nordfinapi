@@ -47,7 +47,7 @@ import adminMixin from '@/mixins/admin.js'
 export default {
   mixins: [adminMixin],
   mounted() {
-    console.log(this.users)
+    //console.log(this.users)
   },
   methods: {
     editUser(id) {

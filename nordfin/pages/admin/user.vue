@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="profile">
+    <div class="profile" v-if="client.firstname">
                 <div class="profile__feedback" v-if="saved">
                     <p><span class="profile__header--name">{{ 
                         `${client.firstname} ${client.lastname}'s`
@@ -31,17 +31,7 @@
                                     <input type="text" v-model="balance"/>
                                 </span>
                             </div>
-                        </div>                    
-                        <!--<div class="profile__section">
-                            <div class="profile__contentarea profile__contentarea--stretch">
-                                <span class="profile__contentarea--label">
-                                    <p>User Balance</p>
-                                </span>
-                                <span class="profile__contentarea--input">
-                                    <input type="text"/>
-                                </span>
-                            </div>
-                        </div>-->
+                        </div> 
                         <div class="profile__section">
                             <div class="profile__contentarea profile__contentarea--stretch">
                                 <span class="profile__contentarea--label">
@@ -53,16 +43,19 @@
                             </div>
                         </div>
 
-                        <div  class="profile__section">
-                            <InputDuplicator :name="'add transactions'"/>
+                        <div class="profile__section">
+                            <InputDuplicator :name="'add transactions'" :clientTransactionsDB="client.transactions"/>
                         </div>
                         <div  class="profile__section">
-                            <InputDuplicator :name="'add notifications'"/>
+                            <InputDuplicator :name="'add notifications'" :clientNotificationsDB="client.notifications"/>
                         </div>
                     </div>                    
                     <div class="profile__bottom">
-                        <span @click="submitChanges" class="profile__bottom--btn">
+                        <span v-if="!loading" @click="submitChanges" class="profile__bottom--btn">
                             Submit
+                        </span>
+                        <span v-if="loading" class="profile__bottom--btn loading">
+                            <p>Loading</p>
                         </span>
                     </div>
                 </div>
@@ -80,7 +73,8 @@ export default {
             accountPlan: null, 
             balance: null,
             requirement: null,
-            saved: false
+            saved: false,
+            loading: false
         }
     },
     mixins: [
@@ -110,8 +104,8 @@ export default {
         submit(changes) {
             const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
             const user_id = this.$route.query.id;
-            
-            console.log(changes)
+            this.loading = true;
+
             fetch(`${this.baseUrl}/api/patchuser?userid=${user_id}`, {
                 method: "PATCH",
                 body: JSON.stringify(changes),
@@ -122,7 +116,7 @@ export default {
             })
             .then(response => response.json())
             .then(json => {
-                console.log(json);
+                this.loading = false;
                 this.saved = true;
 
                 setTimeout(() => {
@@ -146,6 +140,7 @@ export default {
             .then(response => response.json())
             .then(json => {
                   this.$store.dispatch('storeClient', json.user);
+                  //console.log(json.user)
 
                   this.accountPlan = this.client.accountPlan; 
                   this.balance = this.client.balance;
@@ -155,6 +150,12 @@ export default {
     computed: {
         client() {
             return this.$store.getters.client
+        },
+        notifications() {
+            return this.$store.getters.clientNotifications
+        },
+        transactions() {
+            return this.$store.getters.clientTransactions
         }
     }
 }
@@ -163,8 +164,22 @@ export default {
 <style lang="scss" scoped>
 @function scaleValue($value) {
     @return calc(
-      #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
+      #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width));
     );
+}
+
+@keyframes spinFive {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    transform: rotate(360deg);  
+  }
 }
 
 .profile {
@@ -195,6 +210,11 @@ export default {
         display: flex;
         justify-content: space-between;
         margin-bottom: #{scaleValue(30)};
+        flex-direction: column;
+    }
+
+    &__sectionitems {
+        
     }
 
     &__contentarea {
@@ -275,6 +295,35 @@ export default {
             color: #fff;
             padding: #{scaleValue(15)} #{scaleValue(60)};
         }
+    }
+}
+
+.loading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .6;
+    width: #{scaleValue(183)};
+    overflow: hidden;
+
+    & p {
+        opacity: 0;
+    }
+
+    &:before {
+        content: "";
+        width: #{scaleValue(35)};
+        height: #{scaleValue(35)};
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff #fff #fff #1d1f2b;
+        transition: all 0.5s ease-in;
+        background: transparent;
+        position: absolute;
+        top: 12%;
+        left: 40%;
+        animation: spinFive 1s linear 1s infinite;
     }
 }
 </style>
