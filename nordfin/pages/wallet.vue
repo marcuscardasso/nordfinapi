@@ -93,7 +93,7 @@
                             </div>
                             <div class="wallet__figure--right">
                                 <p class="label">
-                                    Total earning
+                                    Total earnings
                                 </p>
                                 <p class="figure">
                                     $0
@@ -110,7 +110,7 @@
                             </div>
                             <div class="wallet__figure--right">
                                 <p class="label">
-                                    Total spending
+                                    Savings
                                 </p>
                                 <p class="figure">
                                     $0
@@ -127,7 +127,7 @@
                             </div>
                             <div class="wallet__figure--right">
                                 <p class="label">
-                                    Spending goal
+                                    Expenses
                                 </p>
                                 <p class="figure">
                                     $0

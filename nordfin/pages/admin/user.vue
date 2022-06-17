@@ -140,7 +140,6 @@ export default {
             .then(response => response.json())
             .then(json => {
                   this.$store.dispatch('storeClient', json.user);
-                  //console.log(json.user)
 
                   this.accountPlan = this.client.accountPlan; 
                   this.balance = this.client.balance;

@@ -11,23 +11,17 @@
        </div>
     </div>
 
-    <div class="wallet__slide" v-if="slide === 'notifications'" @click.stop="closeslide">
+    <div class="wallet__slide" v-if="slide === 'notifications' && user" @click.stop="closeslide">
         <div></div>
        <div class="wallet__slide--body" @click.stop="openslide('notifications')">
             <h2 class="wallet__slide--h2">Your Notifications</h2>
             <div class="wallet__notifications">
-               <!-- <div class="wallet__notification">
-                    <p>You just deposited $25000 in your wallet</p>
-                    <p>July 23rd 2022</p>
+               <div class="wallet__notification" 
+               v-for="notif in user.notifications"
+                @key="notif.notifId">
+                    <p>{{ notif.notifcontent }}</p>
+                    <p>{{ notif.notifdate }}</p>
                 </div>
-                <div class="wallet__notification">
-                    <p>Your cards have been created</p>
-                    <p>July 23rd 2022</p>
-                </div>
-                <div class="wallet__notification">
-                    <p>Your withdrawal request has been reviewed</p>
-                    <p>July 23rd 2022</p>
-                </div>-->
             </div>
        </div>
     </div>
@@ -271,7 +265,7 @@ import userMixin from '@/mixins/user.js'
             return {
                 current: 'overview',
                 transPage: 'all',
-                slide: null,
+                slide: null
             }
         },
         props: ['title'],
@@ -344,6 +338,7 @@ import userMixin from '@/mixins/user.js'
                 background: #fff;
                 height: 100%;
                 width: #{scaleValue(400)};
+                overflow: scroll;
             }
 
             &--transaction {
