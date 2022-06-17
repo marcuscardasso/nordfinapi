@@ -16,14 +16,15 @@
                         <p class="balancelabel">Your balance:</p>
                         <p class="balance">${{user ? truncate(`${user.balance ? user.balance.toLocaleString('en-US') : 0}`) : ''}}</p>
                         <p class="balancecards">2 Cards</p>
-                        <div class="wallet__left--details" @click="$router.push('/overview')">
-                            <span>Details</span>
+                        <!--<div class="wallet__left--details">
+                            <!--<span>Details</span>
+                            <span>wallet</span>
                             <span class="svg">
                                 <svg>
                                     <use xlink:href="@/assets/imgs/sprite.svg#icon-box" />
                                 </svg>
                             </span>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="wallet__cards">

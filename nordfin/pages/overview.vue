@@ -35,41 +35,7 @@
 
                     <div class="dashboard__bottomleft">
                         <h2 class="dashboard__bottomleft--h2">{{ transactionForm }}</h2>
-                        <div class="dashboard__bottomleft--body">
-                            <div class="dashboard__bottomleft--form">
-                                <div class="dashboard__bottomleft--formarea">
-                                    <input type="text" placeholder="Bank" v-model="bank"/>
-                                    <span class="label">Bank</span>
-                                </div>
-                                <div class="dashboard__bottomleft--formarea">
-                                    <input type="text" placeholder="Amount" v-model="amount"/>
-                                    <span class="label">Amount</span>
-                                </div>
-                                <div class="dashboard__bottomleft--formarea">
-                                    <input type="text" placeholder="Recepient account number" v-model="recepient"/>
-                                    <span class="label">
-                                        <p>Recepient account number</p>
-                                    </span>
-                                </div>
-                                <div class="dashboard__bottomleft--networkfee">
-                                    <span>
-                                        <p>Network fee:</p>
-                                    </span>
-                                    <span>
-                                        <p>${{`${networkfee}`}}</p>
-                                    </span>
-                                </div>
-                                <div class="dashboard__bottomleft--formbottom">
-                                    <div class="dashboard__bottomleft--formtotal">
-                                        <span>Total amount</span>
-                                        <span>${{total}}</span>
-                                    </div>
-                                    <div class="dashboard__bottomleft--formbtn">
-                                        <span class="" @click="withdraw">Withdraw Money</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         </div>
                 </div>
 
