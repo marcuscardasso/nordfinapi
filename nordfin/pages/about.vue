@@ -31,7 +31,7 @@
                         <span></span>
                     </div>
                     <div class="about__section--text">
-                        We come from leading Wall Street quant firms and tech companies - Jane Street, Optiver, Susquehanna, Facebook, and Google.
+                        We learnt from the leading wall street, and we looked at the jobs of the careers of the following people below to create a good decentralized banking system and healthy business.
                     </div>
                     <div class="about__section--people">
                         <div class="about__peoplecards">
