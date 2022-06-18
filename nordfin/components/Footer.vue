@@ -2,10 +2,10 @@
   <div class="footer">
     <div class="footer__left">
       <h2 class="footer__left--h2">SwissNordic Financials</h2>
-      <p class="footer__left--p">Tether supports and empowers growing ventures and innovation as a digital token built on multiple blockchains.</p>
+      <p class="footer__left--p">We support and empower a growing array of users, small businesses and innovators in blockchain, and tradfi.</p>
     </div>
     <div class="footer__right">
-      <div class="footer__rightarea">
+      <!--<div class="footer__rightarea">
         <h5>SwissNordic</h5>
         <p>Why SwissNordic</p>
         <p>Fees</p>
@@ -20,7 +20,7 @@
         <h5>Contact</h5>
         <p>FAQs</p>
         <p>Whitepaper</p>
-      </div>
+      </div>-->
      <!-- <div class="footer__rightarea">
         <h5>Products</h5>
         <p>Tokens</p>
