@@ -4,31 +4,23 @@
         <h2 class="accounts__headers--h2">Accounts</h2>
         <h2 class="accounts__headers--sub">Pick an account and get started with and join the financial frontier</h2>
         <div class="accounts__section">
-            <div class="accounts__sectioncard copper">
-                <h4>Copper</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
-            </div>
             <div class="accounts__sectioncard silver">
                 <h4>Silver</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
+                <p>Normal decentralized banking and volatile location access</p>
             </div>
             <div class="accounts__sectioncard gold">
                 <h4>Gold</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
+                <p>Normal decentralised banking, volatile location access, lesser taxes</p>
             </div>
         </div>
         <div class="accounts__section">
             <div class="accounts__sectioncard basic">
                 <h4>Basic</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
-            </div>
-            <div class="accounts__sectioncard diamond">
-                <h4>Diamond</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
+                <p>Normal decentralised banking</p>
             </div>
             <div class="accounts__sectioncard platinum">
                 <h4>Platinum</h4>
-                <p>A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain</p>
+                <p>Normal decentralized banking and volatile location access, high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain. No benefitiary charges</p>
             </div>
         </div>
     </div>

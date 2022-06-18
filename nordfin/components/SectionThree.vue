@@ -10,22 +10,19 @@
                 <figure>
                     <img src='@/assets/images/public.svg'/>
                 </figure>
-                <p class="sectionthree__areacard--p1">Public and Decentralized Structure</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
+                <p class="sectionthree__areacard--p1">Private and Decentralized Structure</p>
             </div>
             <div class="sectionthree__areacard">
                 <figure>
                     <img src='@/assets/images/reliability.svg'/>
                 </figure>
                 <p class="sectionthree__areacard--p1">Streamlined Development</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
             </div>
             <div class="sectionthree__areacard">
                 <figure>
                     <img src='@/assets/images/streamlined.svg'/>
                 </figure>
                 <p class="sectionthree__areacard--p1">High Performance</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
             </div>
         </div>
         <div class="sectionthree__area">
@@ -33,22 +30,19 @@
                 <figure>
                     <img src='@/assets/images/low-cost.svg'/>
                 </figure>
-                <p class="sectionthree__areacard--p1">Public and Decentralized Structure</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
+                <p class="sectionthree__areacard--p1">User oriented investment features</p>
             </div>
             <div class="sectionthree__areacard">
                 <figure>
                     <img src='@/assets/images/community.svg'/>
                 </figure>
-                <p class="sectionthree__areacard--p1">Streamlined Development</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
+                <p class="sectionthree__areacard--p1">Continuous Network Development</p>
             </div>
             <div class="sectionthree__areacard">
                 <figure>
                     <img src='@/assets/images/performance.svg'/>
                 </figure>
-                <p class="sectionthree__areacard--p1">High Performance</p>
-                <p class="sectionthree__areacard--p2">Open source, open to anyone to build on, maintained by the community</p>
+                <p class="sectionthree__areacard--p1">Fast and secure transactions</p>
             </div>
         </div>
     </div>

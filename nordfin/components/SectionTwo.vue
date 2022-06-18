@@ -7,19 +7,19 @@
             <div class="sectiontwo__topcards">
                 <div class="sectiontwo__topcard">
                     <span>Feature One</span>
-                    <span>DISH First Major Carrier to Deploy Helium 5G</span>
+                    <span>Decentralised banking</span>
                 </div>
                 <div class="sectiontwo__topcard">
                     <span>Feature Two</span>
-                    <span>DISH First Major Carrier to Deploy Helium 5G</span>
+                    <span>Privacy</span>
                 </div>
                 <div class="sectiontwo__topcard">
                     <span>Feature Three</span>
-                    <span>DISH First Major Carrier to Deploy Helium 5G</span>
+                    <span>Blockchain transactions without trace</span>
                 </div>
                 <div class="sectiontwo__topcard">
                     <span>Feature Four</span>
-                    <span>DISH First Major Carrier to Deploy Helium 5G</span>
+                    <span>First Major Carrier to Deploy Helium 5G</span>
                 </div>
             </div>
             <div class="sectiontwo__topsponsors">
