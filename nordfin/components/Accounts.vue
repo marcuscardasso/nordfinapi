@@ -4,20 +4,21 @@
         <h2 class="accounts__headers--h2">Accounts</h2>
         <h2 class="accounts__headers--sub">Pick an account and get started with and join the financial frontier</h2>
         <div class="accounts__section">
+            <div class="accounts__sectioncard basic">
+                <h4>Basic</h4>
+                <p>Normal decentralised banking</p>
+            </div>
             <div class="accounts__sectioncard silver">
                 <h4>Silver</h4>
                 <p>Normal decentralized banking and volatile location access</p>
             </div>
-            <div class="accounts__sectioncard gold">
+             <div class="accounts__sectioncard gold">
                 <h4>Gold</h4>
                 <p>Normal decentralised banking, volatile location access, lesser taxes</p>
             </div>
         </div>
         <div class="accounts__section">
-            <div class="accounts__sectioncard basic">
-                <h4>Basic</h4>
-                <p>Normal decentralised banking</p>
-            </div>
+           
             <div class="accounts__sectioncard platinum">
                 <h4>Platinum</h4>
                 <p>Normal decentralized banking and volatile location access, high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain. No benefitiary charges</p>
@@ -90,7 +91,7 @@ export default {
             flex-basis: #{scaleValue(290)};
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            //justify-content: space-between;
             padding: #{scaleValue(24)};
             padding-top: #{scaleValue(50)};
             position: relative;

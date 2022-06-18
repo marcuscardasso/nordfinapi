@@ -20,7 +20,7 @@
                         <span></span>
                     </div>
                     <div class="about__section--text">
-                        SwissNordic is a decentralized exchange built by traders, for traders. SwissNordic 
+                        SwissNordic is a decentralized babking system built by traders, for traders. SwissNordic 
                         offers solutions to improve your chances for success in trades and investments. Our expert team of traders and market
                         analysts are always on deck to help users trade and invest in the safest, most informative and profitable ways possible
                     </div>
@@ -53,10 +53,9 @@
                                 </figure>
                                 <div class="about__card--cardheader">
                                     <h2>Andrew Fitzgerald</h2>
-                                    <h3>CTO and Founder</h3>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>Before founding SwissNordic, Mark was a trader on Jane Street Capital’s international ETF desk. He traded a variety of ETFs, futures, currencies, and equities, and was part of the team that designed their automated OTC trading system.</p>
+                                    <p>Our chief VC who wouldn't be with us if he didnt believe we're on to something big.</p>
                                 </div>
                             </div>
                             <div class="about__card">
@@ -65,10 +64,9 @@
                                 </figure>
                                 <div class="about__card--cardheader">
                                     <h2>Po-Shen Wen</h2>
-                                    <h3>Head of Engineering</h3>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>Before founding SwissNordic, Mark was a trader on Jane Street Capital’s international ETF desk. He traded a variety of ETFs, futures, currencies, and equities, and was part of the team that designed their automated OTC trading system.</p>
+                                    <p>Wen's career building financial services has been well utilized to create a platform where our users can seamlessly enjoy the benefits of both blockchain tech and the best of traditional finance</p>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +77,9 @@
                                 </figure>
                                 <div class="about__card--cardheader">
                                     <h2>Micheal Scottskin</h2>
-                                    <h3>Regulatory Officer</h3>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>Before founding SwissNordic, Mark was a trader on Jane Street Capital’s international ETF desk. He traded a variety of ETFs, futures, currencies, and equities, and was part of the team that designed their automated OTC trading system.</p>
+                                    <p>An experienced banking VC micheal has co founded multiple banking services in many financial inductries.</p>
                                 </div>
                             </div>
                             <div class="about__card">
@@ -91,10 +88,9 @@
                                 </figure>
                                 <div class="about__card--cardheader">
                                     <h2>Daemon</h2>
-                                    <h3>Head of Trading</h3>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>Before founding SwissNordic, Mark was a trader on Jane Street Capital’s international ETF desk. He traded a variety of ETFs, futures, currencies, and equities, and was part of the team that designed their automated OTC trading system.</p>
+                                    <p>Blockchain development consultation and research.</p>
                                 </div>
                             </div>
                             <div class="about__card">
@@ -103,10 +99,9 @@
                                 </figure>
                                 <div class="about__card--cardheader">
                                     <h2>Ariel Cronin</h2>
-                                    <h3>COO</h3>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>Before founding SwissNordic, Mark was a trader on Jane Street Capital’s international ETF desk. He traded a variety of ETFs, futures, currencies, and equities, and was part of the team that designed their automated OTC trading system.</p>
+                                    <p>Chief strategist and financial innovation expert with over 12 years experience.</p>
                                 </div>
                             </div>
                         </div>
