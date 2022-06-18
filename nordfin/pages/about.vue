@@ -79,7 +79,7 @@
                                     <h2>Micheal Scottskin</h2>
                                 </div>
                                 <div class="about__card--cardtext">
-                                    <p>An experienced banking VC micheal has co founded multiple banking services in many financial inductries.</p>
+                                    <p>An experienced banking VC micheal has co founded multiple banking services in many financial industries.</p>
                                 </div>
                             </div>
                             <div class="about__card">
