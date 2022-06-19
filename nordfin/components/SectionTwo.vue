@@ -6,20 +6,16 @@
             <h2 class="sectiontwo__top--h2">Why People choose us</h2>
             <div class="sectiontwo__topcards">
                 <div class="sectiontwo__topcard">
-                    <span>Feature One</span>
-                    <span>Decentralised banking</span>
+                    <span>Decentralised international banking powered by the best of tradfi and defi</span>
                 </div>
                 <div class="sectiontwo__topcard">
-                    <span>Feature Two</span>
-                    <span>Privacy</span>
+                    <span>User centered financial privacy</span>
                 </div>
                 <div class="sectiontwo__topcard">
-                    <span>Feature Three</span>
-                    <span>Blockchain transactions without trace</span>
+                    <span>Blockchain backed transactions without trace</span>
                 </div>
                 <div class="sectiontwo__topcard">
-                    <span>Feature Four</span>
-                    <span>First Major Carrier to Deploy Helium 5G</span>
+                    <span>Your money automatically backed by the most stable assets in any market situation</span>
                 </div>
             </div>
             <div class="sectiontwo__topsponsors">
@@ -47,7 +43,7 @@
             <div class="sectiontwo__bottomleft">
                 <h2 class="sectiontwo__bottomleft--h2">Investing Account is Live</h2>
                 <p class="sectiontwo__bottomleft--p">
-                    The People’s Network is the world’s fastest growing investing network ever.
+                    The Swissnordic network is the world’s fastest growing investment infastructure ever.
                 </p>
                 <button class="sectiontwo__bottomleft--btn" @click="moveToRoute('/signup')">
                     Get an Investing Account

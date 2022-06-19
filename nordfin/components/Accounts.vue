@@ -16,9 +16,6 @@
                 <h4>Gold</h4>
                 <p>Normal decentralised banking, volatile location access, lesser taxes</p>
             </div>
-        </div>
-        <div class="accounts__section">
-           
             <div class="accounts__sectioncard platinum">
                 <h4>Platinum</h4>
                 <p>Normal decentralized banking and volatile location access, high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain. No benefitiary charges</p>

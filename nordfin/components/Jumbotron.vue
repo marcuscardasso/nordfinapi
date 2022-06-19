@@ -4,8 +4,11 @@
         <div class="jumbotron__left jumbotron__side">
             <figure class="jumbotron__left--pink"></figure>
             <h1 class="jumbotron__left--h1">Profit Powered Banking.</h1>
-            <h2 class="jumbotron__left--h2 jumbotron__left--area">Join an Investment Banking Revolution</h2>
-            <p class="jumbotron__left--p jumbotron__left--area">Powered by the best security and banking infrastructure. Experience the best in online banking that works for you</p>
+            <h2 class="jumbotron__left--h2 jumbotron__left--area">Join the frontier in investment banking</h2>
+            <div class="jumbotron__left--p jumbotron__left--area">
+                <p>Powered by the most secure banking infrastructure.</p>
+                <p>Experience the best in online investment banking that works for you</p>
+            </div>
             <div class="jumbotron__btns jumbotron__left--area">
                 <button class="start" @click="moveToRoute('/signup')">Start Banking</button>
                 <button class="login" @click="moveToRoute('/signin')">Login In</button>
@@ -118,7 +121,7 @@ export default {
             opacity: .8;
             font-size: #{scaleValue(20)};
             line-height: #{scaleValue(30)};
-            width: #{scaleValue(400)};
+            width: #{scaleValue(700)};
 
             @media only screen and (max-width: 414px) { 
                 font-size: #{scaleValue(80)};

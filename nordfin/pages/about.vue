@@ -20,9 +20,7 @@
                         <span></span>
                     </div>
                     <div class="about__section--text">
-                        SwissNordic is a decentralized babking system built by traders, for traders. SwissNordic 
-                        offers solutions to improve your chances for success in trades and investments. Our expert team of traders and market
-                        analysts are always on deck to help users trade and invest in the safest, most informative and profitable ways possible
+                        SwissNordic is a decentralized banking system built on the world's most secure tradfi and defi networks. With markets experiencing volatility, Swissnordic's role is keeping your money valuable in an often unstable market. Such stability is achieved by algorithmically moving your money across a selection of assets specifically chosen by our team of experts all aided by some of the world's most advanced finance AI
                     </div>
                 </div>
                 <div class="about__section" id="team">
@@ -31,7 +29,7 @@
                         <span></span>
                     </div>
                     <div class="about__section--text">
-                        We learnt from the leading wall street, and we looked at the jobs of the careers of the following people below to create a good decentralized banking system and healthy business.
+                        We envision a world where money does not lose value just because some assets are no longer needed by the market. Saving money or investing in an asset can be profitable and without uncertainty
                     </div>
                     <div class="about__section--people">
                         <div class="about__peoplecards">
@@ -113,7 +111,7 @@
                         <span></span>
                     </div>
                     <div class="about__section--text">
-                        SwissNordic is proud to have partnered and collaborated with many leading cryptocurrency firms, including but not limited to:
+                        SwissNordic is proud to have partnered and collaborated with many leading tradfi and defi firms, including but not limited to:
                     </div>
                     <div class="about__partners">
                         <div class="about__partnerboxes">
