@@ -3,98 +3,84 @@
     "name": "about",
     "path": "/about",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/about.vue",
-    "chunkName": "pages/about",
-    "_name": "_207da0d9"
+    "chunkName": "pages/about"
   },
   {
     "name": "admin",
     "path": "/admin",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/admin/index.vue",
-    "chunkName": "pages/admin/index",
-    "_name": "_28801444"
+    "chunkName": "pages/admin/index"
   },
   {
     "name": "contact",
     "path": "/contact",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/contact.vue",
-    "chunkName": "pages/contact",
-    "_name": "_0bd4ba28"
+    "chunkName": "pages/contact"
   },
   {
     "name": "overview",
     "path": "/overview",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/overview.vue",
-    "chunkName": "pages/overview",
-    "_name": "_b5823446"
+    "chunkName": "pages/overview"
   },
   {
     "name": "password",
     "path": "/password",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/password.vue",
-    "chunkName": "pages/password",
-    "_name": "_20e051ff"
+    "chunkName": "pages/password"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_023d1bf5"
+    "chunkName": "pages/profile"
   },
   {
     "name": "signin",
     "path": "/signin",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/signin.vue",
-    "chunkName": "pages/signin",
-    "_name": "_698a4e86"
+    "chunkName": "pages/signin"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/signup.vue",
-    "chunkName": "pages/signup",
-    "_name": "_7e20a4fc"
+    "chunkName": "pages/signup"
   },
   {
     "name": "tos",
     "path": "/tos",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/tos.vue",
-    "chunkName": "pages/tos",
-    "_name": "_2d7d1e24"
+    "chunkName": "pages/tos"
   },
   {
     "name": "transfer",
     "path": "/transfer",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/transfer.vue",
-    "chunkName": "pages/transfer",
-    "_name": "_7f50274f"
+    "chunkName": "pages/transfer"
   },
   {
     "name": "wallet",
     "path": "/wallet",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/wallet.vue",
-    "chunkName": "pages/wallet",
-    "_name": "_2fa72f5d"
+    "chunkName": "pages/wallet"
   },
   {
     "name": "admin-dashboard",
     "path": "/admin/dashboard",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/admin/dashboard.vue",
-    "chunkName": "pages/admin/dashboard",
-    "_name": "_4cf62ca0"
+    "chunkName": "pages/admin/dashboard"
   },
   {
     "name": "admin-user",
     "path": "/admin/user",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/admin/user.vue",
-    "chunkName": "pages/admin/user",
-    "_name": "_0177aeef"
+    "chunkName": "pages/admin/user"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/emmanuelnwogbo/work/code/Work/nordfinapi/nordfin/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_40357b9e"
+    "chunkName": "pages/index"
   }
 ]
