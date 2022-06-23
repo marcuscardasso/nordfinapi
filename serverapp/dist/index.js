@@ -52,7 +52,7 @@ app.use(admin);
 app.use(user);
 app.use(contact);
 
-_mongoose["default"].connect('mongodb://127.0.0.1:27017/apidb', {
+_mongoose["default"].connect('mongodb://db:27017/apidb', {
   //mongodb://db:27017/apidb =====> production
   //mongodb://127.0.0.1:27017/apidb ===> development
   useNewUrlParser: true,

@@ -38,7 +38,7 @@ app.use(admin);
 app.use(user);
 app.use(contact);
 
-mongoose.connect('mongodb://127.0.0.1:27017/apidb', {
+mongoose.connect('mongodb://db:27017/apidb', {
   //mongodb://db:27017/apidb =====> production
   //mongodb://127.0.0.1:27017/apidb ===> development
 
