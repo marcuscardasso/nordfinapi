@@ -17,7 +17,7 @@
                     <p><span class="highlight">algorithmic</span> investment strategies</p>
                 </div>
                 <div class="about__area--summary">
-                    <p>SwissNordic is a decentralized banking system built on the world's most secure tradfi and defi networks. With markets experiencing volatility, Swissnordic's role is keeping your money valuable in an often unstable market. Such stability is achieved by algorithmically moving your money across a selection of assets specifically chosen by our team of experts all aided by some of the world's most advanced finance AI.</p>
+                    <p>SwissNordic is a secure and decentralized banking system built on the world's most secure tradfi and defi networks. With markets experiencing volatility, Swissnordic's role is keeping your money valuable in an often unstable market. Such stability is achieved by algorithmically moving your money across a selection of assets specifically chosen by our team of experts all aided by some of the world's most advanced finance AI.</p>
                     <p>We envision a world where money does not lose value just because some assets are no longer needed by the market. Saving money or investing in an asset can be profitable and without uncertainty</p>
                 </div>
             </div>

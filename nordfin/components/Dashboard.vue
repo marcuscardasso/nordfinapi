@@ -186,7 +186,7 @@
                             <span>Wallet</span>
                         </router-link>
                     </div>
-                   <!-- <div class="wallet__sidenav--item" :class="{
+                   <div class="wallet__sidenav--item" :class="{
                         'current': currentroute === 'overview'
                     }">
                         <router-link to="/overview">
@@ -195,9 +195,9 @@
                                     <use xlink:href="@/assets/imgs/sprite.svg#icon-bar-chart" />
                                 </svg>
                             </span>
-                            <span>Stats</span>
+                            <span>Overview</span>
                         </router-link>
-                    </div>-->
+                    </div>
                     <div class="wallet__sidenav--item" :class="{
                         'current': currentroute === 'transfer'
                     }">

@@ -1,7 +1,7 @@
 export default {
     computed: {
         baseUrl() {
-            return `https://api.swissnordic.com`;
+            return `http://localhost:8080`;
         },
     }
 }
