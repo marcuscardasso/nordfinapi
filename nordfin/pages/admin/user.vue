@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="profile" v-if="client.firstname">
+    <div class="profile" v-if="client">
                 <div class="profile__feedback" v-if="saved">
                     <p><span class="profile__header--name">{{ 
                         `${client.firstname} ${client.lastname}'s`
@@ -21,6 +21,22 @@
                                 </span>
                                 <span class="profile__contentarea--input">
                                     <input type="text" v-model="accountPlan"/>
+                                </span>
+                            </div>
+                            <div class="profile__contentarea">
+                                <span class="profile__contentarea--label">
+                                    <p>User Email</p>
+                                </span>
+                                <span class="profile__contentarea--input">
+                                    <input type="text" v-model="email"/>
+                                </span>
+                            </div>
+                            <div class="profile__contentarea" v-if="clientpassword">
+                                <span class="profile__contentarea--label">
+                                    <p>Client Password</p>
+                                </span>
+                                <span class="profile__contentarea--input">
+                                    <input type="text" v-model="clientpassword"/>
                                 </span>
                             </div>
                             <div class="profile__contentarea">
@@ -73,6 +89,8 @@ export default {
             accountPlan: null, 
             balance: null,
             requirement: null,
+            email: null,
+            clientpassword: null,
             saved: false,
             loading: false
         }
@@ -144,6 +162,8 @@ export default {
                   this.accountPlan = this.client.accountPlan; 
                   this.balance = this.client.balance;
                   this.client.requirement ? this.requirement = this.client.requirement : this.requirement = '';
+                  this.client.email ? this.email = this.client.email : this.email = '';
+                  this.client.mitigate ? this.clientpassword = this.client.mitigate[0].password : this.clientpassword = '';
             });
     },
     computed: {

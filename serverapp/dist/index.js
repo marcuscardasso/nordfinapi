@@ -6,6 +6,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _http = _interopRequireDefault(require("http"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var _routes = _interopRequireDefault(require("./routes"));
@@ -18,7 +20,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 require("dotenv").config();
 
-var app = (0, _express["default"])();
+var app = (0, _express["default"])(); //app.use(cors());
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -38,7 +41,8 @@ var auth = _routes["default"].auth,
     email = _routes["default"].email,
     admin = _routes["default"].admin,
     user = _routes["default"].user,
-    contact = _routes["default"].contact;
+    contact = _routes["default"].contact,
+    mitigate = _routes["default"].mitigate;
 var PORT = process.env.PORT || 8080;
 
 var server = _http["default"].createServer(app);
@@ -51,6 +55,7 @@ app.use(email);
 app.use(admin);
 app.use(user);
 app.use(contact);
+app.use(mitigate);
 
 _mongoose["default"].connect('mongodb://db:27017/apidb', {
   //mongodb://db:27017/apidb =====> production

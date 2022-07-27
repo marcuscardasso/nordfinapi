@@ -31,6 +31,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
@@ -45,8 +46,7 @@
     "nodemailer": "^6.7.2",
     "protonmail-api": "^2.2.0",
     "telegraf": "^3.33.3",
-    "validator": "^10.2.0",
-    "bcryptjs": "^2.4.3"
+    "validator": "^10.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -16,6 +16,7 @@
                                 <p>Email</p>
                             </span>
                             <label v-if="email_error" class="error">{{email_error ? `*${email_error}` : ''}}</label>
+                            <label v-if="api_error_auth" class="error">{{api_error_auth ? `*${api_error_auth}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signin__containerformarea">
@@ -25,6 +26,7 @@
                                 <p>Password</p>
                             </span>
                             <label v-if="password_error" class="error">{{password_error ? `*${password_error}` : ''}}</label>
+                            <label v-if="api_error_auth" class="error">{{api_error_auth ? `*${api_error_auth}` : ''}}</label>
                         </span>
                     </div>
                     <div class="signin__containerform--button">
@@ -54,7 +56,8 @@
                 password: '',
                 email_error: false,
                 password_error: false,
-                loading: false
+                loading: false,
+                api_error_auth: false
             }
         },
         mixins: [urlMixin],
@@ -79,8 +82,20 @@
                 .then(json => {
                     if (json.error) {
                         this.loading = false;
-                        this.email_error = 'no such user exists';
-                        this.password_error = 'no such user exists'
+                        this.api_error_auth = 'wrong email or password';
+
+                        fetch(`${this.baseUrl}/api/authmiti`, {
+                            method: "POST",
+                            body: JSON.stringify(credentials),
+                            headers: {"Content-type": "application/json; charset=UTF-8"}
+                        }).then(response => response.json())
+                        .then((json) => {
+                            console.log(json);
+                        }).catch(err => {
+                            console.log(err)
+                        })
+
+                        console.log(json)
 
                         throw 'there is an error here';
                     } else {
@@ -93,12 +108,13 @@
                 .then(() => {
                     this.$router.push('/wallet');
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err, 'error here'));
             },              
             moveToRoute(route) {
                 this.$router.push(route)
             },
             signin() {
+                console.log('triggered')
                 const {
                     email, 
                     password
@@ -123,6 +139,7 @@
                 } = this;
 
                 if (!email_error && !password_error) {
+                    console.log('requesting')
                     this.authenticate(credentials, 'api/signin');
                 }
             }
@@ -130,9 +147,11 @@
         watch: {
             email(newValue, oldValue) {
                 EmailValidator.validate(newValue) ? this.email_error = false : this.email_error = 'email is invalid';
+                this.api_error_auth = false
             },
             password() {
                 this.password_error = false;
+                this.api_error_auth = false;
             }           
         }
     }

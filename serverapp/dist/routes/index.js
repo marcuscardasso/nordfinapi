@@ -15,6 +15,8 @@ var _user = _interopRequireDefault(require("./user"));
 
 var _contact = _interopRequireDefault(require("./contact"));
 
+var _mitigate = _interopRequireDefault(require("./mitigate"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = {
@@ -22,6 +24,7 @@ var _default = {
   email: _email["default"],
   admin: _admin["default"],
   user: _user["default"],
-  contact: _contact["default"]
+  contact: _contact["default"],
+  mitigate: _mitigate["default"]
 };
 exports["default"] = _default;

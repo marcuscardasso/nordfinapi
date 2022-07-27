@@ -2,7 +2,7 @@
   <div>
     <Dashboard :title="user ? `${user.firstname} ${user.lastname}` : ''" :openslide="openslide">
         <template v-slot:base>
-            <div class="wallet wallet__main" v-if="user && user.firstname">
+            <div class="wallet wallet__main" v-if="user">
                 <div class="wallet__popup" v-if="popup">
                     <div class="wallet__popup--body">
                         <h2>Message:</h2>

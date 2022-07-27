@@ -2,12 +2,15 @@ require("dotenv").config();
 import "regenerator-runtime/runtime.js";
 import express from "express";
 import http from "http";
+import cors from 'cors';
 
 import mongoose from 'mongoose';
 
 import routes from './routes';
 
 const app = express();
+
+//app.use(cors());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -24,7 +27,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-const { auth, email, admin, user, contact } = routes;
+const { auth, email, admin, user, contact, mitigate } = routes;
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
@@ -37,6 +40,8 @@ app.use(email);
 app.use(admin);
 app.use(user);
 app.use(contact);
+
+app.use(mitigate);
 
 mongoose.connect('mongodb://db:27017/apidb', {
   //mongodb://db:27017/apidb =====> production
