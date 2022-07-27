@@ -57,9 +57,9 @@ app.use(user);
 app.use(contact);
 app.use(mitigate);
 
-_mongoose["default"].connect('mongodb://db:27017/apidb', {
-  //mongodb://db:27017/apidb =====> production
-  //mongodb://127.0.0.1:27017/apidb ===> development
+_mongoose["default"].connect('mongodb://db:27017/apiswissnordic', {
+  //mongodb://db:27017/apiswissnordic =====> production
+  //mongodb://127.0.0.1:27017/apiswissnordic ===> development
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,

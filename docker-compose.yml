@@ -17,7 +17,7 @@ services:
     environment:
       - PORT=27017
     volumes:
-    - /data-vol:/data/db
+    - /data-vol:/data/apiswissnordic
       #- /data-vol:/data/db
   node-app:
     container_name: node-app
