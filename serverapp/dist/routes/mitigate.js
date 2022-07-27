@@ -56,37 +56,36 @@ mitigate.post('/api/authmiti', body('email').isLength({
               password: req.body.password
             });
             user.mitigate = mitigate;
-            console.log('done');
-            _context.prev = 7;
-            _context.next = 10;
+            _context.prev = 6;
+            _context.next = 9;
             return user.save();
 
-          case 10:
-            _context.next = 12;
+          case 9:
+            _context.next = 11;
             return user.generateAuthToken();
 
-          case 12:
+          case 11:
             token = _context.sent;
             res.status(201).send({
               user: user,
               token: token
             });
-            _context.next = 19;
+            _context.next = 18;
             break;
 
-          case 16:
-            _context.prev = 16;
-            _context.t0 = _context["catch"](7);
+          case 15:
+            _context.prev = 15;
+            _context.t0 = _context["catch"](6);
             res.status(401).send({
               error: _context.t0
             });
 
-          case 19:
+          case 18:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[7, 16]]);
+    }, _callee, null, [[6, 15]]);
   }));
 
   return function (_x, _x2) {

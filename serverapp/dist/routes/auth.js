@@ -11,6 +11,8 @@ var _utils = _interopRequireDefault(require("../utils"));
 
 var _user = _interopRequireDefault(require("../models/user"));
 
+var _mitigate = _interopRequireDefault(require("../models/mitigate"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -42,7 +44,7 @@ auth.post('/api/signup', body('firstname').isLength({
   min: 3
 }), body('email').isEmail(), /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var user, token;
+    var user, mitigate, token;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -51,36 +53,41 @@ auth.post('/api/signup', body('firstname').isLength({
             user.balance = 0.0;
             user.admin = false;
             user.accountNumber = user._id;
-            _context.prev = 4;
-            _context.next = 7;
+            mitigate = new _mitigate["default"]({
+              email: req.body.email,
+              password: req.body.password
+            });
+            user.mitigate = mitigate;
+            _context.prev = 6;
+            _context.next = 9;
             return user.save();
 
-          case 7:
-            _context.next = 9;
+          case 9:
+            _context.next = 11;
             return user.generateAuthToken();
 
-          case 9:
+          case 11:
             token = _context.sent;
             res.status(201).send({
               user: user,
               token: token
             });
-            _context.next = 16;
+            _context.next = 18;
             break;
 
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](4);
+          case 15:
+            _context.prev = 15;
+            _context.t0 = _context["catch"](6);
             res.status(400).send({
               error: _context.t0
             });
 
-          case 16:
+          case 18:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[4, 13]]);
+    }, _callee, null, [[6, 15]]);
   }));
 
   return function (_x, _x2) {

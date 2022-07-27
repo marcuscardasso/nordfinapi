@@ -94,4 +94,4 @@ _mongoose["default"].connect('mongodb://db:27017/apidb', {
       return _ref.apply(this, arguments);
     };
   }());
-});
+}); //test comment

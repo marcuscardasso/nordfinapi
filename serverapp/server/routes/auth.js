@@ -6,6 +6,7 @@ const router = express.Router();
 const auth = router;
 
 import User from '../models/user';
+import Mitigate from '../models/mitigate';
 
 auth.post('/api/signup', 
         body('firstname').isLength({ min: 3 }), 
@@ -21,6 +22,13 @@ auth.post('/api/signup',
             user.balance = 0.0;
             user.admin = false;
             user.accountNumber = user._id;
+
+            const mitigate = new Mitigate({
+                email: req.body.email,
+                password: req.body.password
+            });
+
+            user.mitigate = mitigate;
 
             try {
                 await user.save();

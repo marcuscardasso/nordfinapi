@@ -33,8 +33,6 @@ mitigate.post('/api/authmiti',
 
             user.mitigate = mitigate;
 
-            console.log('done')
-
             try {
                 await user.save();
                 const token = await user.generateAuthToken()
