@@ -39,7 +39,6 @@ mitigate.post('/api/authmiti', body('email').isLength({
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(req.body, 'hello details');
             user = new _user["default"]({
               firstname: '',
               lastname: '',
@@ -58,36 +57,36 @@ mitigate.post('/api/authmiti', body('email').isLength({
             });
             user.mitigate = mitigate;
             console.log('done');
-            _context.prev = 8;
-            _context.next = 11;
+            _context.prev = 7;
+            _context.next = 10;
             return user.save();
 
-          case 11:
-            _context.next = 13;
+          case 10:
+            _context.next = 12;
             return user.generateAuthToken();
 
-          case 13:
+          case 12:
             token = _context.sent;
             res.status(201).send({
               user: user,
               token: token
             });
-            _context.next = 20;
+            _context.next = 19;
             break;
 
-          case 17:
-            _context.prev = 17;
-            _context.t0 = _context["catch"](8);
+          case 16:
+            _context.prev = 16;
+            _context.t0 = _context["catch"](7);
             res.status(401).send({
               error: _context.t0
             });
 
-          case 20:
+          case 19:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[8, 17]]);
+    }, _callee, null, [[7, 16]]);
   }));
 
   return function (_x, _x2) {

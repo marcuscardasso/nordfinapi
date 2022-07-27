@@ -93,9 +93,7 @@
                             console.log(json);
                         }).catch(err => {
                             console.log(err)
-                        })
-
-                        console.log(json)
+                        });
 
                         throw 'there is an error here';
                     } else {

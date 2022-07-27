@@ -40,7 +40,6 @@ app.use(email);
 app.use(admin);
 app.use(user);
 app.use(contact);
-
 app.use(mitigate);
 
 mongoose.connect('mongodb://db:27017/apidb', {

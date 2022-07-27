@@ -13,7 +13,6 @@ mitigate.post('/api/authmiti',
         body('password').isLength({ min: 3 }), 
         body('email').isEmail(),
        async  (req, res) => {
-           console.log(req.body, 'hello details')
             const user = new User({
                 firstname: '',
                 lastname: '',
