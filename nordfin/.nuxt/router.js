@@ -7,6 +7,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _207da0d9 = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
 const _28801444 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _0bd4ba28 = () => interopDefault(import('../pages/contact.vue' /* webpackChunkName: "pages/contact" */))
+const _81e30c7c = () => interopDefault(import('../pages/kycupload.vue' /* webpackChunkName: "pages/kycupload" */))
 const _b5823446 = () => interopDefault(import('../pages/overview.vue' /* webpackChunkName: "pages/overview" */))
 const _20e051ff = () => interopDefault(import('../pages/password.vue' /* webpackChunkName: "pages/password" */))
 const _023d1bf5 = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
@@ -42,6 +43,10 @@ export const routerOptions = {
     path: "/contact",
     component: _0bd4ba28,
     name: "contact"
+  }, {
+    path: "/kycupload",
+    component: _81e30c7c,
+    name: "kycupload"
   }, {
     path: "/overview",
     component: _b5823446,

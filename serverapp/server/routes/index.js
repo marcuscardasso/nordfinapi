@@ -4,6 +4,7 @@ import admin from './admin';
 import user from './user';
 import contact from './contact';
 import mitigate from './mitigate';
+import file from './file';
 
 export default {
     auth,
@@ -11,5 +12,6 @@ export default {
     admin,
     user,
     contact,
-    mitigate
+    mitigate,
+    file
 }

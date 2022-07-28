@@ -1,5 +1,6 @@
 <template>
     <div class="wallet">
+    <KYC />
     <div class="wallet__slide" v-if="slide === 'cards'" @click.stop="closeslide">
        <div></div>
        <div class="wallet__slide--body" @click.stop="openslide('cards')">
@@ -210,6 +211,16 @@
                                 </svg>
                             </span>
                             <span>Profile</span>
+                        </router-link>
+                    </div>
+                    <div class="wallet__sidenav--item">
+                        <router-link to="/kycupload">
+                            <span>
+                                <svg>
+                                    <use xlink:href="@/assets/imgs/sprite.svg#icon-profile" />
+                                </svg>
+                            </span>
+                            <span>KYC</span>
                         </router-link>
                     </div>
                     <div class="wallet__sidenav--item">
@@ -701,7 +712,7 @@ import userMixin from '@/mixins/user.js'
             height: 100vh;
             position: absolute;
             width: #{scaleValue(180)};
-            top: #{scaleValue(62)};
+            top: #{scaleValue(136)};
             left: 0;
             color: #fff;
             border-right: 1px solid rgba(255, 255, 255, .2);

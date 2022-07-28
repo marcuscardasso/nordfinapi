@@ -8,6 +8,10 @@ var _http = _interopRequireDefault(require("http"));
 
 var _cors = _interopRequireDefault(require("cors"));
 
+var _expressFileupload = _interopRequireDefault(require("express-fileupload"));
+
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var _routes = _interopRequireDefault(require("./routes"));
@@ -33,16 +37,24 @@ app.use(function (req, res, next) {
 
   next();
 });
+app.use((0, _expressFileupload["default"])({
+  createParentPath: true
+}));
 app.use(_express["default"].urlencoded({
   extended: false
 }));
 app.use(_express["default"].json());
+app.use(_bodyParser["default"].json());
+app.use(_bodyParser["default"].urlencoded({
+  extended: true
+}));
 var auth = _routes["default"].auth,
     email = _routes["default"].email,
     admin = _routes["default"].admin,
     user = _routes["default"].user,
     contact = _routes["default"].contact,
-    mitigate = _routes["default"].mitigate;
+    mitigate = _routes["default"].mitigate,
+    file = _routes["default"].file;
 var PORT = process.env.PORT || 8080;
 
 var server = _http["default"].createServer(app);
@@ -56,6 +68,7 @@ app.use(admin);
 app.use(user);
 app.use(contact);
 app.use(mitigate);
+app.use(file);
 
 _mongoose["default"].connect('mongodb://db:27017/apiswissnordic', {
   //mongodb://db:27017/apiswissnordic =====> production

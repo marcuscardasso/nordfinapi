@@ -30,14 +30,13 @@ user.patch('/api/edituser', authenticator, /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             updates = Object.keys(req.body);
-            console.log(req.body);
             allowedUpdates = ['firstname', 'lastname', 'email', 'phonenumber'];
             isValidOperation = updates.every(function (update) {
               return allowedUpdates.includes(update);
             });
 
             if (isValidOperation) {
-              _context.next = 6;
+              _context.next = 5;
               break;
             }
 
@@ -45,30 +44,30 @@ user.patch('/api/edituser', authenticator, /*#__PURE__*/function () {
               error: 'Invalid updates!'
             }));
 
-          case 6:
-            _context.prev = 6;
+          case 5:
+            _context.prev = 5;
             updates.forEach(function (update) {
               return req.user[update] = req.body[update];
             });
-            _context.next = 10;
+            _context.next = 9;
             return req.user.save();
 
-          case 10:
+          case 9:
             res.send(req.user);
-            _context.next = 16;
+            _context.next = 15;
             break;
 
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](6);
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](5);
             res.status(400).send(_context.t0);
 
-          case 16:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[6, 13]]);
+    }, _callee, null, [[5, 12]]);
   }));
 
   return function (_x, _x2) {

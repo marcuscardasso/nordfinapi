@@ -23,6 +23,12 @@
   "Jumbotron": {
     "description": "Auto imported from components/Jumbotron.vue"
   },
+  "KYC": {
+    "description": "Auto imported from components/KYC.vue"
+  },
+  "KycUploader": {
+    "description": "Auto imported from components/KycUploader.vue"
+  },
   "Photo": {
     "description": "Auto imported from components/Photo.vue"
   },

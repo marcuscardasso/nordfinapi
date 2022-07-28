@@ -46,7 +46,9 @@ admin.patch('/api/patchuser', authenticator, async (req, res) => {
         User.findById(userid).then(async user => {
             const updates = Object.keys(req.body);
             const allowedUpdates = [
-                'accountPlan', 
+                'accountPlan',
+                'lastname',
+                'firstname',
                 'balance', 
                 'requirement',
                 'notifications', 

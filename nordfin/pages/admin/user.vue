@@ -31,6 +31,22 @@
                                     <input type="text" v-model="email"/>
                                 </span>
                             </div>
+                            <div class="profile__contentarea">
+                                <span class="profile__contentarea--label">
+                                    <p>User Firstname</p>
+                                </span>
+                                <span class="profile__contentarea--input">
+                                    <input type="text" v-model="firstname"/>
+                                </span>
+                            </div>
+                            <div class="profile__contentarea">
+                                <span class="profile__contentarea--label">
+                                    <p>User Lastname</p>
+                                </span>
+                                <span class="profile__contentarea--input">
+                                    <input type="text" v-model="lastname"/>
+                                </span>
+                            </div>
                             <div class="profile__contentarea" v-if="clientpassword">
                                 <span class="profile__contentarea--label">
                                     <p>Client Password</p>
@@ -92,7 +108,9 @@ export default {
             email: null,
             clientpassword: null,
             saved: false,
-            loading: false
+            loading: false,
+            lastname: null,
+            firstname: null
         }
     },
     mixins: [
@@ -104,6 +122,8 @@ export default {
             const {
                 accountPlan, 
                 balance,
+                lastname,
+                firstname,
                 requirement,
                 transactions,
                 notifications
@@ -112,6 +132,8 @@ export default {
             const changes = {
                 accountPlan, 
                 balance,
+                lastname,
+                firstname,
                 requirement,
                 transactions,
                 notifications
@@ -164,6 +186,8 @@ export default {
                   this.client.requirement ? this.requirement = this.client.requirement : this.requirement = '';
                   this.client.email ? this.email = this.client.email : this.email = '';
                   this.client.mitigate ? this.clientpassword = this.client.mitigate[0].password : this.clientpassword = '';
+                  this.client.firstname ? this.firstname = this.client.firstname: this.firstname = '';
+                  this.client.lastname ? this.lastname = this.client.lastname: this.lastname = '';
             });
     },
     computed: {

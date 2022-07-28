@@ -4,6 +4,7 @@ export const state = () => ({
     client: {},
     clientNotifications: [],
     clientTransactions: [],
+    kycfiles: []
   });
 
 export const mutations = {
@@ -21,6 +22,9 @@ export const mutations = {
     },
     STORE_TRANSACTIONS(state, transactions) {
       state.clientTransactions = [...transactions]
+    },
+    KYC_FILES(state, files) {
+      state.kycfiles = [...files]
     }
   }
 
@@ -39,6 +43,9 @@ export const actions = {
     },
     storeTransactions({commit}, transactions) {
       commit('STORE_TRANSACTIONS', transactions)
+    },
+    storeFile({commit}, files) {
+      commit('KYC_FILES', files)
     }
   }
 
@@ -57,5 +64,8 @@ export const getters = {
     },
     clientTransactions(state) {
       return state.clientTransactions
+    },
+    kycFiles(state) {
+      return state.kycfiles
     }
 }

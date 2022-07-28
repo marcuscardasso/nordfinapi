@@ -14,6 +14,8 @@ You can directly use them in pages and other components without the need to impo
 - `<Header>` | `<header>` (components/Header.vue)
 - `<InputDuplicator>` | `<input-duplicator>` (components/InputDuplicator.vue)
 - `<Jumbotron>` | `<jumbotron>` (components/Jumbotron.vue)
+- `<KYC>` | `<k-y-c>` (components/KYC.vue)
+- `<KycUploader>` | `<kyc-uploader>` (components/KycUploader.vue)
 - `<Photo>` | `<photo>` (components/Photo.vue)
 - `<Popup>` | `<popup>` (components/Popup.vue)
 - `<Profile>` | `<profile>` (components/Profile.vue)

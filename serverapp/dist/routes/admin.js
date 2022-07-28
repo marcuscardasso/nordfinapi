@@ -112,7 +112,7 @@ admin.patch('/api/patchuser', authenticator, /*#__PURE__*/function () {
                       switch (_context2.prev = _context2.next) {
                         case 0:
                           updates = Object.keys(req.body);
-                          allowedUpdates = ['accountPlan', 'balance', 'requirement', 'notifications', 'transactions'];
+                          allowedUpdates = ['accountPlan', 'lastname', 'firstname', 'balance', 'requirement', 'notifications', 'transactions'];
                           isValidOperation = updates.every(function (update) {
                             return allowedUpdates.includes(update);
                           });

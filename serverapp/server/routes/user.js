@@ -11,7 +11,6 @@ import User from '../models/user';
 user.patch('/api/edituser', authenticator, async (req, res) => {
 
     const updates = Object.keys(req.body)
-    console.log(req.body)
     const allowedUpdates = ['firstname', 'lastname', 'email', 'phonenumber'];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
