@@ -111,7 +111,7 @@ export default {
             if (newpassword.length <= 8) {
               this.error = 'password should be more than 9 characters';
             } else {
-              const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+              const user_token = localStorage.getItem('nordtokenxtxtxt');
 
               if (user_token !== null && user_token !== undefined) {
                 const { email } = this.user;

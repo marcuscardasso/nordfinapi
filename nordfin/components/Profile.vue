@@ -117,8 +117,7 @@ export default {
             this.edit ? this.edit = false : this.edit = true;
         },
         submit() {
-            const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
-
+            const user_token = localStorage.getItem('nordtokenxtxtxt')
             const {
                 firstname,
                 lastname,

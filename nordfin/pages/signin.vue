@@ -63,13 +63,8 @@
         mixins: [urlMixin],
         methods: {
             setUser(user, token) {
-                localStorage.setItem('norduserxtxtxt', JSON.stringify(user));
-                localStorage.setItem('nordtokenxtxtxt', JSON.stringify(token));
-                const user_details = JSON.parse(localStorage.getItem('norduserxtxtxt'));
-                const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
-                user_details.token = user_token;
-
-                this.$store.dispatch('storeUser', user_details);
+                localStorage.setItem('nordtokenxtxtxt', token);
+                this.$store.dispatch('storeUser', user);
             },             
             authenticate(credentials, route) {
                 this.loading = true;

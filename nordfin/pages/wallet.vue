@@ -245,7 +245,7 @@
                 }
             },
             withdrawApiRequest(requestbody) {
-                const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+                const user_token = localStorage.getItem('nordtokenxtxtxt');
                 this.loading = true;
 
                 fetch(`${this.baseUrl}/api/request`, {

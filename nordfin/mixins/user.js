@@ -31,10 +31,9 @@ export default {
             .catch(err => console.log(err));
         },
         getUser() {
-            const user_details = JSON.parse(localStorage.getItem('norduserxtxtxt'));
-            const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+            const user_token = localStorage.getItem('nordtokenxtxtxt');
 
-            if (user_details && user_token) {
+            if (user_token) {
                 fetch(`${this.baseUrl}/api/getuser`, {
                     method: "GET",
                     headers: {
@@ -53,22 +52,16 @@ export default {
             }
         },
         setUser(user, token) {
-            localStorage.setItem('norduserxtxtxt', JSON.stringify(user));
-            localStorage.setItem('nordtokenxtxtxt', JSON.stringify(token));
-            const user_details = JSON.parse(localStorage.getItem('norduserxtxtxt'));
-            const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
-            user_details.token = user_token;
-
-            this.$store.dispatch('storeUser', user_details);
+            localStorage.setItem('nordtokenxtxtxt', token);
+            this.$store.dispatch('storeUser', user);
         },
         requestSomething(body) {
             this.popuptype = 'loading';
 
             setTimeout(() => {
-                const user_details = JSON.parse(localStorage.getItem('norduserxtxtxt'));
-                const user_token = JSON.parse(localStorage.getItem('nordtokenxtxtxt'));
+                const user_token = localStorage.getItem('nordtokenxtxtxt');
 
-                if (user_details && user_token) {
+                if (user_token) {
                     fetch(`${this.baseUrl}/api/request`, {
                         method: "POST",
                         body: JSON.stringify(body),
